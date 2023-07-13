@@ -6,11 +6,12 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:50:44 by sbenes            #+#    #+#             */
-/*   Updated: 2023/07/12 16:57:05 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/07/13 13:49:07 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
 using namespace std;
 
 /* Defining two user namespaces with functions of the same name */
