@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/07/13 14:52:34 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/07/13 15:22:59 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 using namespace std;
 
+/* defining MegaPhone class - including one member function wgich takes string
+ane prints uppercase version */
 class MegaPhone
 {
 public:
@@ -42,7 +44,6 @@ int main(int ac, char **av)
 	{
 		while (av[++i])
 			megaphone.ft_megaphone(av[i]);
-
 	}
 	return 0;
 }
