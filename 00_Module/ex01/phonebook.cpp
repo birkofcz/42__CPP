@@ -6,12 +6,15 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:58:49 by sbenes            #+#    #+#             */
-/*   Updated: 2023/07/27 12:56:38 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/07/27 14:20:19 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
+/* 
+My function to return lowercase version of arg - for comparation purposes
+ */
 std::string sb_tolower_str(std::string src)
 {
 	std::string result;
@@ -22,11 +25,17 @@ std::string sb_tolower_str(std::string src)
 	return result;
 }
 
+/* 
+Clears the terminal screen
+ */
 void	ft_clear(void)
 {
 	std::cout << "\033[2J\033[1;1H";
 }
 
+/* 
+Puts a contact to the screen, making it 10 chars long or trimming it as stated in subject
+ */
 void	ft_putcontact(std::string data)
 {
 	std::string temp = data;
@@ -137,6 +146,11 @@ int main(void)
 		{
 			std::cout << "\033[2J\033[1;1H";
 			break ;
+		}
+		else if (command != "add" && command != "search" && command != "exit")
+		{
+			ft_clear();
+			continue ;
 		}
 	}
 	return 0;
