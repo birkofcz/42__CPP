@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:58:49 by sbenes            #+#    #+#             */
-/*   Updated: 2023/07/27 12:17:47 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/07/27 12:56:38 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,9 @@ std::string sb_tolower_str(std::string src)
 	return result;
 }
 
-void	ft_homescreen(std::string last_status)
+void	ft_clear(void)
 {
-
 	std::cout << "\033[2J\033[1;1H";
-	std::cout << std::endl;
-	std::cout << "[[ AWESOME PHONEBOOK 1.0 ]]" << std::endl;
-	std::cout << std::endl;
-	if (last_status != " ")
-	{
-		std::cout << last_status << std::endl;
-	}
-	return ;
 }
 
 void	ft_putcontact(std::string data)
@@ -52,55 +43,64 @@ void	ft_putcontact(std::string data)
 int main(void)
 {
 	std::string command;
-	std::string last_status = " ";
 	int			contacts = 8;
+	int			index = 0;
 	PhoneBook 	Pbook;
 
 	Pbook.contact_count = 0;
-	ft_homescreen("Welcome!");
+	ft_clear();
 	while (1)
 	{
-		//ft_homescreen(last_status);
 		std::cout << "Enter command (ADD, SEARCH, or EXIT): ";
 		std::cin >> command;
 		command = sb_tolower_str(command);
 		
 		if (command == "add")
 		{
-			ft_homescreen("ADD new contact:");
+			ft_clear();
 			if (contacts == 0)
 				std::cout << "No more space. New contact will overwrite oldest one." << std::endl;
 			std::cout << "Contacts remaining: " << contacts << std::endl;
-			//std::cout << "ADD new contact: " << std::endl;
-			if (Pbook.contact_count > 7)
-				Pbook.contact_count = 0; // dodelat loop, kontakty se musi posouvat?
-			std::cout << "test: " << Pbook.contact_count << std::endl;
+			std::cout << "Writing on position: " << (index + 1) << std::endl;
 			std::cout << "First name: ";
-			std::cin >> Pbook.ContactMem[Pbook.contact_count].first_name;
+			std::cin >> Pbook.ContactMem[index].first_name;
 
 			std::cout << "Last name: ";
-			std::cin >> Pbook.ContactMem[Pbook.contact_count].last_name;
+			std::cin >> Pbook.ContactMem[index].last_name;
 
 			std::cout << "Nickname: ";
-			std::cin >> Pbook.ContactMem[Pbook.contact_count].nickname;
+			std::cin >> Pbook.ContactMem[index].nickname;
 
 			std::cout << "Phone: ";
-			std::cin >> Pbook.ContactMem[Pbook.contact_count].phone_number;
+			std::cin >> Pbook.ContactMem[index].phone_number;
 
 			std::cout << "Darkest secret: ";
-			std::cin >> Pbook.ContactMem[Pbook.contact_count].secret;
+			std::cin >> Pbook.ContactMem[index].secret;
 			
-			Pbook.contact_count++;
+			if (Pbook.contact_count != 8)
+				Pbook.contact_count++;
+			if (index != 7)
+				index++;
+			else if (index == 7)
+				index = 0;
 			if (contacts != 0)
 				contacts--;
-			last_status = "Contact saved!";
+			ft_clear();
+			std::cout << "Contact saved!" << std::endl;
 		}
 		else if (command == "search")
 		{
 			int i = 0;
 			int j = 1;
-			int index;
-
+			int ind;
+			
+			ft_clear();
+			std::cout << std::endl;
+			if (Pbook.contact_count == 0)
+			{
+				std::cout << "No contacts" << std::endl;
+				continue;
+			}
 			while (j <= Pbook.contact_count)
 			{
 				std::cout << "  " << j << " "<< "|";
@@ -111,21 +111,23 @@ int main(void)
 				i++;
 				j++;
 			}
-			std::cout << "Enter the index to show contact: ";
-			std::cin >> index;
+			std::cout << std::endl;
+			std::cout << "Enter number to show contact: ";
+			std::cin >> ind;
 			while (1) {
-				if (index > Pbook.contact_count || index < 1) 
+				if (ind > Pbook.contact_count || ind < 1) 
 				{
 					std::cout << "Error: out of bounds. Enter again: ";
-					std::cin >> index;
+					std::cin >> ind;
 				}
-				else if (index > 0 && index <= Pbook.contact_count)
+				else if (ind > 0 && ind <= Pbook.contact_count)
 				{
-					std::cout << Pbook.ContactMem[index - 1].first_name << std::endl;
-					std::cout << Pbook.ContactMem[index - 1].last_name << std::endl;
-					std::cout << Pbook.ContactMem[index - 1].nickname << std::endl;
-					std::cout << Pbook.ContactMem[index - 1].phone_number << std::endl;
-					std::cout << Pbook.ContactMem[index - 1].secret << std::endl;
+					ft_clear();
+					std::cout << Pbook.ContactMem[ind - 1].first_name << std::endl;
+					std::cout << Pbook.ContactMem[ind - 1].last_name << std::endl;
+					std::cout << Pbook.ContactMem[ind - 1].nickname << std::endl;
+					std::cout << Pbook.ContactMem[ind - 1].phone_number << std::endl;
+					std::cout << Pbook.ContactMem[ind - 1].secret << std::endl;
 					std::cout << std::endl;
 					break ;
 				}
