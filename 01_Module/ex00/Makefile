@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 16:42:15 by sbenes            #+#    #+#              #
-#    Updated: 2023/07/28 16:42:20 by sbenes           ###   ########.fr        #
+#    Updated: 2023/08/07 13:16:20 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,14 @@ RED =	\033[31m
 NC =	\033[0m
 
 #name
-NAME =		phonebook
+NAME =		brainz
 
 #compilation
 CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		phonebook.cpp
+SRC = 		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 all: $(NAME)
 

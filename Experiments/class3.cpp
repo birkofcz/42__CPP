@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 16:19:19 by sbenes            #+#    #+#             */
-/*   Updated: 2023/07/29 16:47:40 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/07 13:10:26 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Person::~Person()
 }
 
 void Person::saveName(std::string givename)
-{
+{e
 	name = givename;
 }
 
