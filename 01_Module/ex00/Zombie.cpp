@@ -6,15 +6,15 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:28:58 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/07 14:27:11 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/10 14:20:42 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) // constructor
+Zombie::Zombie() // constructor
 {
-	this->name = name;
+	this->name = "";
 }
 
 Zombie::~Zombie() // destruktor
@@ -25,4 +25,9 @@ Zombie::~Zombie() // destruktor
 void Zombie::announce(void)
 {
 	std::cout << this->name << ":" << " BraiiiiiiinnnzzzZ.." << std::endl;
+}
+
+void Zombie::setName(std::string name)
+{
+	this->name = name;
 }
