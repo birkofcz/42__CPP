@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/10 16:11:13 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/11 11:42:46 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/11 14:02:21 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "Weapon.hpp"
 
-void ft_megaphone(std::string src)
+class	HumanB
 {
-	int i = -1;
-	
-	while (src[++i])
-	{
-		src[i] = toupper(src[i]);
-		std::cout << src[i];
-	}
-}
+	private:
+		std::string _name;
+		Weapon* 	_weapon;
 
-int main(int ac, char **av)
-{
-	int i = 0;
+	public:
+		void attack();
+		void setWeapon(Weapon& weapon);
 
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else if (ac > 1)
-	{
-		while (av[++i])
-			ft_megaphone(av[i]);
-	}
-	return 0;
-}
-
+	HumanB(std::string name);
+	~HumanB();
+};

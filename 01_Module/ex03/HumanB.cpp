@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/10 16:11:13 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/11 11:44:08 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/11 14:04:58 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "HumanB.hpp"
 
-void ft_megaphone(std::string src)
+/* Constructor */
+HumanB::HumanB(std::string name) : _name(name)
 {
-	int i = -1;
-	
-	while (src[++i])
-	{
-		src[i] = toupper(src[i]);
-		std::cout << src[i];
-	}
+	this->_weapon = NULL;
 }
 
-int main(int ac, char **av)
-{
-	int i = 0;
+/* Destructor */
+HumanB::~HumanB(){}
 
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else if (ac > 1)
-	{
-		while (av[++i])
-			ft_megaphone(av[i]);
-	}
-	return 0;
+/* Member functions - methods */
+void HumanB::attack()
+{
+	std::cout << this->_name << "attacks with their " << this->_weapon->getType() << std::endl;
 }
 
+void HumanB::setWeapon(Weapon& weapon)
+{
+	this->_weapon = &weapon;
+}

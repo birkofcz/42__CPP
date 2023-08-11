@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/10 16:11:13 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/11 11:07:15 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/11 13:55:55 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-void ft_megaphone(std::string src)
+int	main()
 {
-	int i = -1;
-	
-	while (src[++i])
 	{
-		src[i] = toupper(src[i]);
-		std::cout << src[i];
+		Weapon club = Weapon("crude spiked club");
+
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-}
-
-int main(int ac, char **av)
-{
-	int i = 0;
-
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else if (ac > 1)
 	{
-		while (av[++i])
-			ft_megaphone(av[i]);
+		Weapon club = Weapon("crude spiked club");
+
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
 	return 0;
 }
-

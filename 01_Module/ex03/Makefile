@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/10 14:30:51 by sbenes            #+#    #+#              #
-#    Updated: 2023/08/11 11:05:31 by sbenes           ###   ########.fr        #
+#    Created: 2023/08/11 11:05:53 by sbenes            #+#    #+#              #
+#    Updated: 2023/08/11 11:53:14 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,14 @@ RED =	\033[31m
 NC =	\033[0m
 
 #name
-NAME =		references
+NAME =		violence
 
 #compilation
 CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		main.cpp
+SRC = 		main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 all: $(NAME)
 

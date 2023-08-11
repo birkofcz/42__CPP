@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/10 16:11:13 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/11 14:58:59 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/11 16:54:52 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef REPLACER_H
+# define REPLACER_H
+
 #include <iostream>
-#include <cctype>
+#include <fstream>
 
-void ft_megaphone(std::string src)
-{
-	int i = -1;
-	
-	while (src[++i])
-	{
-		src[i] = toupper(src[i]);
-		std::cout << src[i];
-	}
-}
 
-int main(int ac, char **av)
-{
-	int i = 0;
+/* replacer.cpp */
+std::string *sb_split(const std::string& source, char delimiter);
+int word_count(const std::string& source, char c);
 
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else if (ac > 1)
-	{
-		while (av[++i])
-			ft_megaphone(av[i]);
-	}
-	return 0;
-}
-
+#endif

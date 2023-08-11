@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/13 14:28:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/10 16:11:13 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/11 11:17:01 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/11 13:55:30 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cctype>
+#include "Weapon.hpp"
 
-void ft_megaphone(std::string src)
+
+/* Constructor */
+Weapon::Weapon(std::string type)
 {
-	int i = -1;
-	
-	while (src[++i])
-	{
-		src[i] = toupper(src[i]);
-		std::cout << src[i];
-	}
+	this->setType(type);
 }
 
-int main(int ac, char **av)
-{
-	int i = 0;
+/* Destructor */
+Weapon::~Weapon(){}
 
-	if (ac == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	else if (ac > 1)
-	{
-		while (av[++i])
-			ft_megaphone(av[i]);
-	}
-	return 0;
+/* Member functions */
+void Weapon::setType(std::string type)
+{
+	this->type = type;
 }
 
+const std::string&	Weapon::getType()
+{
+	return (this->type);
+}
