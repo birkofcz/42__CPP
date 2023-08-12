@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 14:46:54 by sbenes            #+#    #+#              #
-#    Updated: 2023/08/11 16:47:14 by sbenes           ###   ########.fr        #
+#    Updated: 2023/08/12 15:46:00 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		main.cpp sb_split.cpp
+SRC = 		main.cpp
 
 all: $(NAME)
 

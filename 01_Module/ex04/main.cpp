@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:49:06 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/11 17:12:35 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/12 15:47:27 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,23 @@ void	ft_replacer(char **av)
 
 	ft_testprint(infile, find, replace_with, outfile);
 
+	size_t pos = 0;
 	std::ifstream text(infile);
 	if (text.is_open())
 	{
-
+		std::string buffer;
+		std::getline(text, buffer, '\0');
+		while ((pos = buffer.find(find, pos)) != std::string::npos) 
+		{
+			buffer.erase(pos, find.length()); // Erase the found target string
+			buffer.insert(pos, replace_with); // Insert the replacement string
+			pos += replace_with.length(); // Move the position forward to avoid an infinite loop
+		}
+		//buffer = ft_strreplace(buffer, find, replace_with);
+		std::ofstream edited(outfile);
+		edited << buffer;
+		text.close();
+		edited.close();
 	}
 }
 
