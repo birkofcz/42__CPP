@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:58:59 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/12 15:51:02 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/12 16:03:32 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <iostream>
 #include <fstream>
+
+#define RED "\033[31m"
+#define GRE "\033[32m"
+#define YEL "\033[33m"
+#define RES "\033[0m"
 
 /* main.cpp */
 void	ft_replacer(char **av);

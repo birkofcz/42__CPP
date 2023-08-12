@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:49:06 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/12 15:47:27 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/12 16:08:48 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	ft_testprint(std::string infile, std::string find, std::string replace_with, std::string outfile)
 {
-	std::cout << "infile: " << infile << std::endl;
-	std::cout << "find: " << find << std::endl;
-	std::cout << "replace_with: " << replace_with << std::endl;
-	std::cout << "outfile: " << outfile << std::endl;
+	std::cout << std::endl;
+	std::cout << "|| infile: " << infile << " ||" << std::endl;
+	std::cout << "|| string to find: " << find << " ||" << std::endl;
+	std::cout << "|| replacement string: " << replace_with << " ||" << std::endl;
+	std::cout << "|| outfile: " << outfile << " ||" << std::endl;
+	std::cout << std::endl;
 }
 
 void	ft_replacer(char **av)
@@ -41,25 +43,25 @@ void	ft_replacer(char **av)
 			buffer.insert(pos, replace_with); // Insert the replacement string
 			pos += replace_with.length(); // Move the position forward to avoid an infinite loop
 		}
-		//buffer = ft_strreplace(buffer, find, replace_with);
 		std::ofstream edited(outfile);
 		edited << buffer;
 		text.close();
 		edited.close();
+		std::cout << GRE << "File successfully edited\n" << RES << std::endl;
 	}
+	else
+		std::cerr << RED << "Error: Can't open file\n" << RES << std::endl;
 }
 
 int	main(int ac, char **av)
 {
 	if (ac != 4)
 	{
-		std::cerr << "Error: Bad arguments" << std::endl;
-		std::cerr << "run ./replacer <filename> <string_to_find> <str_to_replace_with>" << std::endl;
+		std::cerr << RED << "Error: Bad arguments" << RES << std::endl;
+		std::cerr << YEL << "run ./replacer <filename> <string_to_find> <str_to_replace_with>" << RES << std::endl;
 		return 1;
 	}
 	else
-	{
 		ft_replacer(av);
-	}
 	return 0;
 }
