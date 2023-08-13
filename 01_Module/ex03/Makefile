@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/11 11:05:53 by sbenes            #+#    #+#              #
-#    Updated: 2023/08/11 11:53:14 by sbenes           ###   ########.fr        #
+#    Updated: 2023/08/13 15:29:56 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME):
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"
 	@rm -f $(NAME)
-
+	
 fclean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"
 	@rm -f $(NAME)

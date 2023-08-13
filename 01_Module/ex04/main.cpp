@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:49:06 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/13 10:42:05 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:44:50 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,16 @@ void	ft_replacer(char **av)
 	{
 		std::string buffer;
 		std::getline(text, buffer, '\0');
-		if (buffer.empty())
+		/* if (buffer.empty())
 		{
 			std::cerr << RED << "Error: File is empty\n" << RES << std::endl;
 			return ;
-		}
-		while ((pos = buffer.find(find, pos)) != std::string::npos) 
+		} */
+		while (1) 
 		{
+			pos = buffer.find(find, pos); //tries to find the "to find" string in buffer.
+			if (pos == std::string::npos) // string::npos means it was not found
+				break;
 			buffer.erase(pos, find.length()); // Erase the found target string
 			buffer.insert(pos, replace_with); // Insert the replacement string
 			pos += replace_with.length(); // Move the position forward to avoid an infinite loop
@@ -55,7 +58,7 @@ void	ft_replacer(char **av)
 		std::cout << GRE << "File successfully edited\n" << RES << std::endl;
 	}
 	else
-		std::cerr << RED << "Error: Can't open file\n" << RES << std::endl;
+		std::cerr << RED << "Error: Can't open file or the file is empty\n" << RES << std::endl;
 }
 
 int	main(int ac, char **av)

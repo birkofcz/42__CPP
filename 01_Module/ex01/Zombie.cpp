@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 13:28:58 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/09 17:06:20 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:21:24 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Zombie::Zombie()
 	this->name = "";
 }
 
-Zombie::~Zombie(){} // destruktor
+Zombie::~Zombie(){};
 
 void Zombie::setName(std::string name)
 {

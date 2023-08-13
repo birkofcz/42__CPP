@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 16:42:15 by sbenes            #+#    #+#              #
-#    Updated: 2023/08/07 13:16:20 by sbenes           ###   ########.fr        #
+#    Updated: 2023/08/13 15:16:22 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ $(NAME):
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
+	@./brainz
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"

@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 10:46:09 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/13 14:43:36 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:48:31 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define INFO_M "HARL: I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!"
 #define WARNING_M "HARL: I think I deserve to have some extra bacon for free. I've been coming for years whereas you started working here since last month."
 #define ERROR_M "HARL: This is unacceptable! I want to speak to the manager now."
-#define STANDARD_M "[ Probably complaining about random insignificat problem ... ]"
+#define STANDARD_M "[ Probably complaining about random insignificant problem ... ]"
 #define NO_ARGS_M "HARL: eee...don't know what to complain about right now, but I'm sure I'll find something soon!"
 #define TOO_MUCH_ARGS_M "HARL: Wooow, take it easy, my complains are so important that I make sure I do one at a time!"
 
