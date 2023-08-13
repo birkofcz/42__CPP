@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 10:50:33 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/13 14:51:50 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 14:41:27 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,42 @@ int Harl::ft_setlevel(std::string& level)
 	else if (level == "INFO" || level == sb_tolower_str("INFO")) return INFO;
 	else if (level == "WARNING" || level == sb_tolower_str("WARNING")) return WARNING;
 	else if (level == "ERROR" || level == sb_tolower_str("ERROR")) return ERROR;
-	else return -1;
+	else 
+		return -1;
 }
 
 /* 
 This function creates the array of pointer to member functions of Harl class.
-This is a typedef declared in the header as "typedef void(Harl::*mem_func)()"
+This is a typedef declared in the header as "typedef void(Harl::*mem_func)(void)"
 Becouse we dont have object instance here, we call those functions as follows:
-this->*func[index], whes "this-> works the same as for example:
+this->*func[index], whes "this->" ("this instatnce") works the same as for example:
 Harl harl;
 harl->*func[index].
+
+FALL-THROUGH BEHAVIOR for switch statement. For this version of Harl, we need him to 
+shout the complain of passed argument, and also all of the subsequent cases. This is done by 
+not adding a "break" statement to the cases (except for the last one - to break out of the loop").
  */
 void Harl::complain(std::string level)
 {
 	int level_n = ft_setlevel(level);
 	mem_func functions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	if (level_n != -1)
-		(this->*functions[level_n])();
-	else
-		std::cerr << YEL << STANDARD_M << RES << std::endl;
-};
+	switch (level_n)
+	{
+		case DEBUG:
+			(this->*functions[DEBUG])();
+		case INFO:
+			(this->*functions[INFO])();
+		case WARNING:
+			(this->*functions[WARNING])();
+		case ERROR:
+			(this->*functions[ERROR])();
+			break ;
+		default:
+			std::cerr << YEL << STANDARD_M << RES << std::endl;
+	}
+}
 
 /* Destructor */
 Harl::~Harl(){};
