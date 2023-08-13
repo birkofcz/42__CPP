@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:49:06 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/12 16:08:48 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 10:42:05 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,23 @@ void	ft_replacer(char **av)
 	ft_testprint(infile, find, replace_with, outfile);
 
 	size_t pos = 0;
-	std::ifstream text(infile);
+	std::ifstream text(infile.c_str());
 	if (text.is_open())
 	{
 		std::string buffer;
 		std::getline(text, buffer, '\0');
+		if (buffer.empty())
+		{
+			std::cerr << RED << "Error: File is empty\n" << RES << std::endl;
+			return ;
+		}
 		while ((pos = buffer.find(find, pos)) != std::string::npos) 
 		{
 			buffer.erase(pos, find.length()); // Erase the found target string
 			buffer.insert(pos, replace_with); // Insert the replacement string
 			pos += replace_with.length(); // Move the position forward to avoid an infinite loop
 		}
-		std::ofstream edited(outfile);
+		std::ofstream edited(outfile.c_str());
 		edited << buffer;
 		text.close();
 		edited.close();
