@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 11:25:45 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/11 14:04:18 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:09:40 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Constructor */
 /* Here, we are using the initialization list to initialize member variables - good practice */
-HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon) {}
+HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon) {}
 
 /* Destructor */
 HumanA::~HumanA(){}

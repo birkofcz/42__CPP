@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 11:44:08 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/11 14:04:58 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:12:23 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ HumanB::~HumanB(){}
 /* Member functions - methods */
 void HumanB::attack()
 {
-	std::cout << this->_name << "attacks with their " << this->_weapon->getType() << std::endl;
+	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }
 
 void HumanB::setWeapon(Weapon& weapon)

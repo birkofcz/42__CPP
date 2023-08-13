@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 11:21:28 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/11 14:00:30 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 15:08:20 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ class	HumanA
 	public:
 		void attack();
 
-	HumanA(std::string name, Weapon &weapon);
+	HumanA(std::string name, Weapon& weapon);
 	~HumanA();
 };
