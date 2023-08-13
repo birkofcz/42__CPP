@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 10:50:33 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/13 14:51:50 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/13 16:04:01 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,14 @@ this->*func[index], whes "this-> works the same as for example:
 Harl harl;
 harl->*func[index].
  */
+
+
 void Harl::complain(std::string level)
 {
 	int level_n = ft_setlevel(level);
 	mem_func functions[] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	if (level_n != -1)
-		(this->*functions[level_n])();
-	else
-		std::cerr << YEL << STANDARD_M << RES << std::endl;
+	(level_n != -1) ? (this->*functions[level_n])() : (void)(std::cerr << YEL << STANDARD_M << RES << std::endl);
 };
 
 /* Destructor */
