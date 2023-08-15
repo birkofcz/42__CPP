@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 07:57:17 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/14 11:31:57 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/15 14:54:15 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ class Fixed
 		static const int	fractional_bits;
 
 	public:
-		int		getRawBits(void) const;
-		void	setRawBits(int const raw);
-	
 	
 		Fixed();
 		Fixed(const Fixed& copy);				//Copy constructor
 		Fixed &operator = (const Fixed& src);	//Copy assignment operator overload
 		~Fixed(); 
+	
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+	
 };
 
 #endif
