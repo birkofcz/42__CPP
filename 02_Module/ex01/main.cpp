@@ -6,42 +6,54 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:33:13 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/15 14:11:46 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/16 15:03:08 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+#include <iostream>
+
 int main( void ) 
 {
-	Fixed a;		//object a is created from class Fixed
-	Fixed b(a);		//object b is created - as a copy of object a (copy constructor is used )
-	Fixed c;		//object c of Fixed class is created
-
-	c = b;			//object c is assigned a value of b (the overload assignement operator is used for this)
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 	
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	a = Fixed( 1234.4321f );
+
+	std::cout << "a is " << a << std::endl;
+	std::cout << "b is " << b << std::endl;
+	std::cout << "c is " << c << std::endl;
+	std::cout << "d is " << d << std::endl;
+	
+	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
+	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 	return 0;
 }
-
 
 /* Should output something similar to:
 $> ./a.out
 Default constructor called
+Int constructor called
+Float constructor called
 Copy constructor called
-Copy assignment operator called // <-- This line may be missing depending on your implementation
-getRawBits member function called
-Default constructor called
 Copy assignment operator called
-getRawBits member function called
-getRawBits member function called
-0
-getRawBits member function called
-0
-getRawBits member function called
-0
+Float constructor called
+Copy assignment operator called
+Destructor called
+a is 1234.43
+b is 10
+c is 42.4219
+d is 10
+a is 1234 as integer
+b is 10 as integer
+c is 42 as integer
+d is 10 as integer
+Destructor called
 Destructor called
 Destructor called
 Destructor called

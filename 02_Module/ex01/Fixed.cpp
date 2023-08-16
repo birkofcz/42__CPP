@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/15 15:08:40 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/16 15:18:15 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ Fixed &Fixed::operator=(const Fixed &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
-		this->fixedpoint_value  = src.getRawBits();
+		this->fixedpoint_value  = src.fixedpoint_value;
 	return *this;
 }
 
@@ -85,4 +85,34 @@ int	Fixed::getRawBits(void) const
 void Fixed::setRawBits(int const raw)
 {
 	this->fixedpoint_value = raw;
+}
+
+/* EX01 part - basically the conversion of ints and floats to fixed-point value */
+
+Fixed::Fixed(const int int_number)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->fixedpoint_value = int_number * 256;
+}
+
+Fixed::Fixed(const float float_number)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->fixedpoint_value = roundf(float_number * 256);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return ((float)this->fixedpoint_value / 256);
+}
+
+int		Fixed::toInt(void) const
+{
+	return ((int)(this->fixedpoint_value / 256));
+}
+
+std::ostream	&operator<<(std::ostream &stream, Fixed const &fixed_object)
+{
+	stream << fixed_object.toFloat();
+	return (stream);
 }

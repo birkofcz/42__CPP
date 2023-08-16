@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 07:57:17 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/15 14:54:15 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/16 14:55:41 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FIXED_H
 
 # include <iostream>
+# include <cmath>
 /* 
 ORTHODOX CANONICAL FORM:
 - Default constructor
@@ -33,13 +34,18 @@ class Fixed
 	public:
 	
 		Fixed();
-		Fixed(const Fixed& copy);				//Copy constructor
-		Fixed &operator = (const Fixed& src);	//Copy assignment operator overload
+		Fixed(const int int_num);				//ex01 - constructor taking int
+		Fixed(const float float_num);			//ex01 - constructor taking float
+		Fixed(const Fixed& original);			//ex 00 - Copy constructor
+		Fixed &operator=(const Fixed& src);		//ex 00 - Copy assignment operator overload
 		~Fixed(); 
 	
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-	
+		int		toInt(void) const;
+		float	toFloat(void) const;
 };
+
+std::ostream &operator<<(std::ostream &stream, Fixed const &f);
 
 #endif
