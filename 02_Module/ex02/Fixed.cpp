@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/16 17:50:28 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/16 16:57:56 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,72 +89,87 @@ void Fixed::setRawBits(int const raw)
 
 /* EX01 part - basically the conversion of ints and floats to fixed-point value */
 
-/* 
-THEORY ON FIXED-POINT NUMBERS:
-A fixed-point representation is a method of storing or representing numbers 
-in non-floating-point formats.
-
-A fixed-point number is essentially divided into two parts:
-1. Integral part: The bits that represent the integer portion of the number.
-2. Fractional part: The bits that represent the fraction part of the number.
- */
-
-/* Parametric constructor taking const int - and converting it to the fixed-point value
-The conversion can be done two ways:
-1) I can use bitshift and literally shift the int number by fractional bits (8)
-2) I can multiply the number by 2pow8, which is 256.
-Example:
-int x = 5;
-int fixedpoint_value = 5 * 256 (or 3 << fractional_bits(8)) = 1280.
-in binary: 101(5) becomes 10100000000(1280).
- */
 Fixed::Fixed(const int int_number)
 {
 	std::cout << "Int constructor called" << std::endl;
 	this->fixedpoint_value = int_number * 256;
 }
 
-/* Parametric constructor taking a float 
-Same procedure as for the int above, but now with float
-example:
-3.5 -> fixedpoint_value = 3.5 * 256 -> 896. 
-There is the roundf() function to round the result to the nearest integer number
-*/
 Fixed::Fixed(const float float_number)
 {
 	std::cout << "Float constructor called" << std::endl;
 	this->fixedpoint_value = roundf(float_number * 256);
 }
 
-/* Functions that will get the float or int form the fixed-point value
-It is using the same system of conversion, this time dividing fixed-point value by 256
-or bitshifting >> by 8 (fractional bits).
-To float - fixedpoint_value / 256, to get the float, I must cast the fixedpoint_value to float
-and do the operation on it - if there is no casting, I will get int.
- */
 float	Fixed::toFloat(void) const
 {
 	return ((float)this->fixedpoint_value / 256);
 }
 
-/* 
-To int - same as above, just not casting to float - to be sure, casting to int here.
- */
 int		Fixed::toInt(void) const
 {
 	return ((int)(this->fixedpoint_value / 256));
 }
 
-/* 
-Overloading of << stream operator.
-std::ostream - is the base of output stream operations. It includes cout, ofstream etc.
-This overload is of that type and is used basically to tell the stream process what to print 
-wehn there is instance of a class.
-In this case, we need to print - when sending a Fixed object to the stream - a fixed-point number
-converted to the float.
- */
 std::ostream	&operator<<(std::ostream &stream, Fixed const &fixed_object)
 {
 	stream << fixed_object.toFloat();
 	return (stream);
 }
+
+/* EX02 part - comparsion, arithmetic, increment & decrement overloading, min & max functions */
+
+/* comparsion overloading = returning the logical value true-false */
+bool	Fixed::operator>(const Fixed &src) 
+{
+	return (this->fixedpoint_value > src.fixedpoint_value);
+}
+
+bool	Fixed::operator<(const Fixed &src)
+{
+	return (this->fixedpoint_value < src.fixedpoint_value);
+}
+
+bool	Fixed::operator>=(const Fixed &src)
+{
+	return (this->fixedpoint_value >= src.fixedpoint_value);
+}
+
+bool	Fixed::operator<=(const Fixed &src)
+{
+	return (this->fixedpoint_value <= src.fixedpoint_value);
+}
+
+bool	Fixed::operator==(const Fixed &src)
+{
+	return (this->fixedpoint_value == src.fixedpoint_value);
+}
+
+bool	Fixed::operator!=(const Fixed &src)
+{
+	return (this->fixedpoint_value != src.fixedpoint_value);
+}
+
+/* + - * / operators - based on Fixed class */
+Fixed	Fixed::operator+(Fixed &a)
+{
+	return (this->fixedpoint_value + a.fixedpoint_value);
+}
+
+Fixed	Fixed::operator-(Fixed &a)
+{
+	return (this->fixedpoint_value - a.fixedpoint_value);
+}
+
+Fixed	Fixed::operator*(Fixed &a)
+{
+	return (this->fixedpoint_value * a.fixedpoint_value);
+}
+Fixed	Fixed::operator/(Fixed &a)
+{
+	return (this->fixedpoint_value / a.fixedpoint_value);
+}
+
+/* Increment and decrement overloading */
+
+/* Public static member functions min-max (non-const and const versions) */
