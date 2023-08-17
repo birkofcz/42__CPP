@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:33:13 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/16 15:03:08 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:01:58 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,27 @@
 
 #include <iostream>
 
-int main( void ) 
+int main() 
 {
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	Fixed const b( Fixed(5.05f) * Fixed(2) );
 	
-	a = Fixed( 1234.4321f );
-
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 	return 0;
 }
-
-/* Should output something similar to:
+/* Should output something like (for greater readability, the constructor/destructor mes-
+sages are removed in the example below):
 $> ./a.out
-Default constructor called
-Int constructor called
-Float constructor called
-Copy constructor called
-Copy assignment operator called
-Float constructor called
-Copy assignment operator called
-Destructor called
-a is 1234.43
-b is 10
-c is 42.4219
-d is 10
-a is 1234 as integer
-b is 10 as integer
-c is 42 as integer
-d is 10 as integer
-Destructor called
-Destructor called
-Destructor called
-Destructor called
-$> */
-
+0
+0.00390625
+0.00390625
+0.00390625
+0.0078125
+10.1016
+10.1016 */

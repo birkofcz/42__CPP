@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/17 15:02:47 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:22:47 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,54 +120,55 @@ std::ostream	&operator<<(std::ostream &stream, Fixed const &fixed_object)
 /* EX02 part - comparsion, arithmetic, increment & decrement overloading, min & max functions */
 
 /* comparsion overloading = returning the logical value true-false */
-bool	Fixed::operator>(const Fixed &src) 
+bool	Fixed::operator>(const Fixed &src) const
 {
 	return (this->fixedpoint_value > src.fixedpoint_value);
 }
 
-bool	Fixed::operator<(const Fixed &src)
+bool	Fixed::operator<(const Fixed &src) const
 {
 	return (this->fixedpoint_value < src.fixedpoint_value);
 }
 
-bool	Fixed::operator>=(const Fixed &src)
+bool	Fixed::operator>=(const Fixed &src) const
 {
 	return (this->fixedpoint_value >= src.fixedpoint_value);
 }
 
-bool	Fixed::operator<=(const Fixed &src)
+bool	Fixed::operator<=(const Fixed &src) const
 {
 	return (this->fixedpoint_value <= src.fixedpoint_value);
 }
 
-bool	Fixed::operator==(const Fixed &src)
+bool	Fixed::operator==(const Fixed &src) const
 {
 	return (this->fixedpoint_value == src.fixedpoint_value);
 }
 
-bool	Fixed::operator!=(const Fixed &src)
+bool	Fixed::operator!=(const Fixed &src) const
 {
 	return (this->fixedpoint_value != src.fixedpoint_value);
 }
 
 /* + - * / operators - based on Fixed class */
-Fixed	Fixed::operator+(Fixed &a)
+Fixed	Fixed::operator+(const Fixed &a) const
 {
-	return (this->fixedpoint_value + a.fixedpoint_value);
+	return Fixed(this->toFloat() + a.toFloat());
 }
 
-Fixed	Fixed::operator-(Fixed &a)
+Fixed	Fixed::operator-(const Fixed &a) const
 {
-	return (this->fixedpoint_value - a.fixedpoint_value);
+	return Fixed(this->toFloat() - a.toFloat());
 }
 
-Fixed	Fixed::operator*(Fixed &a)
+Fixed	Fixed::operator*(const Fixed &a) const
 {
-	return (this->fixedpoint_value * a.fixedpoint_value);
+	return Fixed(this->toFloat() * a.toFloat());
 }
-Fixed	Fixed::operator/(Fixed &a)
+
+Fixed	Fixed::operator/(const Fixed &a) const
 {
-	return (this->fixedpoint_value / a.fixedpoint_value);
+	return Fixed(this->toFloat() / a.toFloat());
 }
 
 /* Increment and decrement overloading */
@@ -224,9 +225,32 @@ Fixed	Fixed::operator--(int)
 	return (temp);
 }
 
-
-static Fixed& min(Fixed &a, Fixed &b)
-{
-	
-}
 /* Public static member functions min-max (non-const and const versions) */
+
+Fixed& Fixed::min(Fixed &a, Fixed &b)
+{	
+	if (a.getRawBits() < b.getRawBits())
+		return a;
+	return b;
+}
+
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return a;
+	return b;
+}
+
+Fixed& Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return a;
+	return b;
+}
+
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a.getRawBits() < b.getRawBits())
+		return a;
+	return b;
+}

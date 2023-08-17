@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 07:57:17 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/17 15:03:50 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:20:56 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ class Fixed
 		int		toInt(void) const;				//ex01
 		float	toFloat(void) const;			//ex01
 
-		bool	operator>(const Fixed &src);	//ex02
-		bool	operator<(const Fixed &src);	//ex02
-		bool	operator>=(const Fixed &src);	//ex02
-		bool	operator<=(const Fixed &src);	//ex02
-		bool	operator==(const Fixed &src);	//ex02
-		bool	operator!=(const Fixed &src);	//ex02
+		bool	operator>(const Fixed &src) const;	//ex02
+		bool	operator<(const Fixed &src) const;	//ex02
+		bool	operator>=(const Fixed &src) const;	//ex02
+		bool	operator<=(const Fixed &src) const;	//ex02
+		bool	operator==(const Fixed &src) const;	//ex02
+		bool	operator!=(const Fixed &src) const;	//ex02
 
-		Fixed	operator+(Fixed &a);			//ex02
-		Fixed 	operator-(Fixed &a);			//ex02
-		Fixed 	operator*(Fixed &a);			//ex02
-		Fixed 	operator/(Fixed &a);			//ex02
+		Fixed	operator+(const Fixed &a) const;			//ex02
+		Fixed 	operator-(const Fixed &a) const;			//ex02
+		Fixed 	operator*(const Fixed &a) const;			//ex02
+		Fixed 	operator/(const Fixed &a) const;			//ex02
 		
 		Fixed&	operator++(void);				//ex02 - pre-increment
 		Fixed	operator++(int);				//ex02 - post-increment
@@ -64,7 +64,10 @@ class Fixed
 		Fixed	operator--(int);				//ex02 - post-decrement
 
 
-		Fixed& min(Fixed &a, Fixed &b);
+		static Fixed& min(Fixed &a, Fixed &b);
+		static const Fixed& min(const Fixed &a, const Fixed &b);
+		static Fixed& max(Fixed &a, Fixed  &b);
+		static const Fixed& max(const Fixed &a, const Fixed &b);
 
 		/* public overloaded member functions */
 
