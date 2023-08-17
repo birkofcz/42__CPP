@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/17 16:22:47 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 16:50:41 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Announce itslef for debugging purposes
 Fixed::Fixed()
 {
 	this->fixedpoint_value = 0;
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 }
 
 /* 
@@ -36,7 +36,7 @@ It is called like so: Fixed b(a) - creates object b as a copy of a.
  */
 Fixed::Fixed(const Fixed& original)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	//this->fixedpoint_value = original.getRawBits(); //this is a option here...setting it one by one...
 	*this = original;
 }
@@ -65,7 +65,7 @@ so you are returning a dereferenced value of it.
  */
 Fixed &Fixed::operator=(const Fixed &src)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &src)
 		this->fixedpoint_value  = src.fixedpoint_value;
 	return *this;
@@ -73,12 +73,12 @@ Fixed &Fixed::operator=(const Fixed &src)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return this->fixedpoint_value;
 }
 
@@ -91,13 +91,13 @@ void Fixed::setRawBits(int const raw)
 
 Fixed::Fixed(const int int_number)
 {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	this->fixedpoint_value = int_number * 256;
 }
 
 Fixed::Fixed(const float float_number)
 {
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 	this->fixedpoint_value = roundf(float_number * 256);
 }
 
@@ -108,7 +108,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return ((int)(this->fixedpoint_value / 256));
+	return ((int)this->fixedpoint_value / 256);
 }
 
 std::ostream	&operator<<(std::ostream &stream, Fixed const &fixed_object)
@@ -172,11 +172,6 @@ Fixed	Fixed::operator/(const Fixed &a) const
 }
 
 /* Increment and decrement overloading */
-/* "ε" - epsilon.  Tiny positive number, especially when discussing 
-algorithms or numerical methods where precision is a concern. In our case of 
-Fixed class, "ε" would represent the smallest representable difference between 
-two  Fixed values, based on the granularity of the fixed-point representation - which is,
-in terms of decreasuing or increasing +  or - 256 */
 
 /* 
 prefix = ++a;
@@ -186,7 +181,7 @@ It increments fixedpoint_value like this:
  */
 Fixed&	Fixed::operator++(void)				
 {
-	this->fixedpoint_value += 256;
+	this->fixedpoint_value++;
 	return (*this);
 }
 
@@ -199,8 +194,8 @@ This is a convention in C++ - allows for a differentiation.
  */
 Fixed	Fixed::operator++(int)
 {
-	Fixed temp = *this;
-	this->fixedpoint_value += 256;
+	Fixed temp(*this);
+	this->fixedpoint_value++;
 	return (temp);
 }
 
@@ -210,7 +205,7 @@ Same process as above, just decrementing
  */
 Fixed&	Fixed::operator--(void)				
 {
-	this->fixedpoint_value -= 256;
+	this->fixedpoint_value--;
 	return (*this);
 }
 
@@ -220,8 +215,8 @@ Same priocess, just decrementing
  */
 Fixed	Fixed::operator--(int)
 {
-	Fixed temp = *this;
-	this->fixedpoint_value -= 256;
+	Fixed temp(*this);
+	this->fixedpoint_value--;
 	return (temp);
 }
 
@@ -243,14 +238,14 @@ const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
 
 Fixed& Fixed::max(Fixed &a, Fixed &b)
 {
-	if (a.getRawBits() < b.getRawBits())
+	if (a.getRawBits() > b.getRawBits())
 		return a;
 	return b;
 }
 
 const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
 {
-	if (a.getRawBits() < b.getRawBits())
+	if (a.getRawBits() > b.getRawBits())
 		return a;
 	return b;
 }
