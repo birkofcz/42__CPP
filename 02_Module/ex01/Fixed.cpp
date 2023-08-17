@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/16 17:50:28 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 14:24:47 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,10 @@ in non-floating-point formats.
 A fixed-point number is essentially divided into two parts:
 1. Integral part: The bits that represent the integer portion of the number.
 2. Fractional part: The bits that represent the fraction part of the number.
+
+The use of fixed point data type is used widely in digital signal processing (DSP) 
+and game applications, where performance is sometimes more important then precision. 
+Fixed point arithmetic is much faster than floating point arithmetic
  */
 
 /* Parametric constructor taking const int - and converting it to the fixed-point value

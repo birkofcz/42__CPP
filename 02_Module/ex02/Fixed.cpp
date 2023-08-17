@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:31:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/16 16:57:56 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:02:47 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,62 @@ Fixed	Fixed::operator/(Fixed &a)
 }
 
 /* Increment and decrement overloading */
+/* "ε" - epsilon.  Tiny positive number, especially when discussing 
+algorithms or numerical methods where precision is a concern. In our case of 
+Fixed class, "ε" would represent the smallest representable difference between 
+two  Fixed values, based on the granularity of the fixed-point representation - which is,
+in terms of decreasuing or increasing +  or - 256 */
 
+/* 
+prefix = ++a;
+Incremebnts and returns the incremented value - as a reference.
+It increments fixedpoint_value like this:
+++fixedpoint_value;
+ */
+Fixed&	Fixed::operator++(void)				
+{
+	this->fixedpoint_value += 256;
+	return (*this);
+}
+
+/* 
+postfix = fixedpoint_value++;
+Increments, but returns the original value.
+In C++, difference between prefix and postfix versions of the increment 
+(or decrement) operator is made using a dummy int parameter for the postfix version. 
+This is a convention in C++ - allows for a differentiation.
+ */
+Fixed	Fixed::operator++(int)
+{
+	Fixed temp = *this;
+	this->fixedpoint_value += 256;
+	return (temp);
+}
+
+/* 
+Prefix --fixedpoint_value;
+Same process as above, just decrementing
+ */
+Fixed&	Fixed::operator--(void)				
+{
+	this->fixedpoint_value -= 256;
+	return (*this);
+}
+
+/* 
+Postfix fixedpoint_value--;
+Same priocess, just decrementing
+ */
+Fixed	Fixed::operator--(int)
+{
+	Fixed temp = *this;
+	this->fixedpoint_value -= 256;
+	return (temp);
+}
+
+
+static Fixed& min(Fixed &a, Fixed &b)
+{
+	
+}
 /* Public static member functions min-max (non-const and const versions) */

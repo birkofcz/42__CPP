@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 07:57:17 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/16 16:49:28 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/17 15:03:50 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,16 @@ class Fixed
 		Fixed 	operator*(Fixed &a);			//ex02
 		Fixed 	operator/(Fixed &a);			//ex02
 		
+		Fixed&	operator++(void);				//ex02 - pre-increment
+		Fixed	operator++(int);				//ex02 - post-increment
+		Fixed&	operator--(void);				//ex02 - pre-decrement
+		Fixed	operator--(int);				//ex02 - post-decrement
+
+
+		Fixed& min(Fixed &a, Fixed &b);
+
 		/* public overloaded member functions */
+
 };
 
 std::ostream &operator<<(std::ostream &stream, Fixed const &f);
