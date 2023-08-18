@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 11:33:13 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/15 14:11:46 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/18 14:43:51 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main( void )
 	Fixed c;		//object c of Fixed class is created
 
 	c = b;			//object c is assigned a value of b (the overload assignement operator is used for this)
-	
+
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
 	std::cout << c.getRawBits() << std::endl;
