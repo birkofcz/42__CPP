@@ -1,54 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 17:19:57 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/29 16:18:02 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/29 15:59:37 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/29 16:00:32 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 /* Default constructor */
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
-	this->_type = "Animal meta type";
-	std::cout << "[[ Animal ]] default constructor called" << std::endl;
+	this->_type = "";
+	std::cout << "[[ WrongAnimal ]] default constructor called" << std::endl;
 }
 
 /* Copy constructor */
-Animal::Animal(const Animal& original)
+WrongAnimal::WrongAnimal(const WrongAnimal& original)
 {
 	*this = original;
-	std::cout << "[[ Animal ]] copy constructor called" << std::endl;
+	std::cout << "[[ WrongAnimal ]] copy constructor called" << std::endl;
 	return ;
 }
 
 /* Copy assignment operator overload */
-Animal& Animal::operator=(const Animal& src)
+WrongAnimal& WrongAnimal::operator=(const WrongAnimal& src)
 {
-	std::cout << "[[ Animal ]] copy assignment operator called" << std::endl;
+	std::cout << "[[ WrongAnimal ]] copy assignment operator called" << std::endl;
 	this->_type = src._type;
 	return *this;
 }
 
 /* Destructor */
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "[[ Animal ]] destructor called" << std::endl;
+	std::cout << "[[ WrongAnimal ]] destructor called" << std::endl;
 }
 
 /* Member functions - methods */
-void	Animal::makeSound() const
+void	WrongAnimal::makeSound() const
 {
-	std::cout << "[[ Animal ]] makeSound() called" << std::endl;
 	return ;
 }
 
-std::string	Animal::getType() const
+std::string	WrongAnimal::getType() const
 {
 	return this->_type;
 }

@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/13 10:45:26 by sbenes            #+#    #+#              #
-#    Updated: 2023/08/29 14:17:56 by sbenes           ###   ########.fr        #
+#    Updated: 2023/08/29 16:06:59 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		main.cpp Animal.cpp Cat.cpp Dog.cpp
+SRC = 		main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 all: $(NAME)
 
 $(NAME): 
