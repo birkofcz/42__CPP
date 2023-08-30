@@ -44,6 +44,6 @@ WrongCat::~WrongCat()
 /* Member functions - methods */
 void	WrongCat::makeSound() const
 {
-	std::cout << "WrongMeowww..." << std::endl;
+	std::cout << "Wrong--Meowww..." << std::endl;
 	return ;
 }
