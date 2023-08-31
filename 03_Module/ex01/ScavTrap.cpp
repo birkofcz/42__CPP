@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:19:11 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 11:56:52 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 12:03:58 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ ScavTrap::ScavTrap(std::string trap_name) : ClapTrap(trap_name)
 
 ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap(original)
 {
-	name = original.name + "(copy constructed)";
+	name = original.name + "(copy constructed)"; //for debugging purposes
 	hit_points = original.hit_points;
 	energy_points = original.energy_points;	
 	attack_damage = original.attack_damage;
@@ -45,7 +45,7 @@ ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap(original)
 ScavTrap & ScavTrap::operator=(const ScavTrap &src)
 {
 	ClapTrap::operator=(src);
-	name = src.name + "(copy assigned)";
+	name = src.name + "(copy assigned)"; //for debugging purposes
 	hit_points = src.hit_points;
 	energy_points = src.energy_points;
 	attack_damage = src.attack_damage;

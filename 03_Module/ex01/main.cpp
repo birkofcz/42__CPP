@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 12:01:42 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 12:57:17 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int main()
 	scav1.attack("scav2");
 	scav1.report();
 	scav2.takeDamage(20);
+	scav2.report();
+	scav2.beRepaired(10);
 	scav2.report();
 	scav1.guardGate();
 

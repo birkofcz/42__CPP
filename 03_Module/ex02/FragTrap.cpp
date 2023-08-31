@@ -5,44 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 13:29:21 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/28 14:38:46 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/31 12:39:20 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/31 12:40:40 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(str name) : ClapTrap(name)
+// Constructors
+FragTrap::FragTrap() : ClapTrap()
 {
+	name = "FragTrap( " + this->getName() + ")"; 
 	hit_points = 100;
 	energy_points = 100;
 	attack_damage = 30;
-
-	std::cout << YEL << "[[ FragTrap ]] " << this->name << RES << " constructor called." << std::endl;
+	std::cout << "[[ FragTrap ]] Default Constructor called" << std::endl;
 }
 
+FragTrap::FragTrap(std::string trap_name) : ClapTrap(trap_name)
+{
+	name = "FragTrap(" + this->getName() + ")"; //for illustration purposes, that we have the derived class name
+	hit_points = 100;
+	energy_points = 100;
+	attack_damage = 30;
+	std::cout << "[[ FragTrap ]] Constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &original) : ClapTrap(original)
+{
+	name = original.name + "(copy constructed)"; //for debugging purposes
+	hit_points = original.hit_points;
+	energy_points = original.energy_points;	
+	attack_damage = original.attack_damage;
+	std::cout << "[[ FragTrap ]] Copy Constructor called" << std::endl;
+}
+
+// Operators
+FragTrap & FragTrap::operator=(const FragTrap &src)
+{
+	ClapTrap::operator=(src);
+	name = src.name + "(copy assigned)"; //for debugging purposes
+	hit_points = src.hit_points;
+	energy_points = src.energy_points;
+	attack_damage = src.attack_damage;
+	std::cout << "[[ FragTrap ]] Assignement operator called" << std::endl;
+	return *this;
+}
+
+// Destructor
 FragTrap::~FragTrap()
 {
-	std::cout << YEL << "[[ FragTrap ]] " << this->name << RES << " was destroyed." << std::endl;
+	std::cout << "[[ FragTrap ]] Destructor called" << std::endl;
 }
 
-void FragTrap::highFiveGuys()
+
+/* =================================================================================== */
+
+void	FragTrap::highFiveGuys()
 {
-	std::cout << YEL << "[[ FragTrap ]] " << this->name << RES << " is reguesting a high-five!" << std::endl;
+	std::cout << "[[ FragTrap ]] " << this->getName() << " wants to high five" << std::endl;
 }
 
-void FragTrap::attack(const str& target)
+/* my extra methods */
+void	FragTrap::report() const
 {
-	if (energy_points <= 0)
-	{
-		std::cout << YEL << "[[ FragTrap ]] " << name << RES << " attempts to attack " << target << " but is out of energy points!" << std::endl;
-		return ;
-	}
-	std::cout << YEL << "[[ FragTrap ]] " << name << RES << " attacks " << target << " causing " << this->attack_damage << " points of damage!" << std::endl;
-	energy_points--;
-}
-
-void FragTrap::report()
-{
-	std::cout << YEL << "[[ FragTrap ]] " << this->name << RES << " : " << hit_points << " HP, " << energy_points << " EP." << std::endl;
+	std::cout << "[[ FragTrap ]] " << this->getName() << " HP: " << this->getHP() << " Energy: " << this->getEnergy() << std::endl;
 }
