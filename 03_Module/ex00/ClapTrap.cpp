@@ -6,13 +6,16 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:19:57 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 11:11:19 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 11:27:14 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 /* Constructor */
+
+ClapTrap::ClapTrap() {}
+
 ClapTrap::ClapTrap(std::string trap_name)
 {
 	name = trap_name;

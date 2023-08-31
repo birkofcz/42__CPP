@@ -5,62 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 13:29:21 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 10:53:58 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/31 11:19:11 by sbenes            #+#    #+#             */
+/*   Updated: 2023/08/31 11:56:52 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "ScavTrap.hpp"
 
-/* Constructors and destructors */
-ScavTrap::ScavTrap(str name) : ClapTrap(name)
+// Constructors
+ScavTrap::ScavTrap() : ClapTrap()
 {
+	name = "ScavTrap( " + this->getName() + ")"; 
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
-	std::cout << "[[ ScavTrap ]] " << this->name << " constructor called." << std::endl;
+	std::cout << "[[ ScavTrap ]] Default Constructor called" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& original) : ClapTrap(original)
+ScavTrap::ScavTrap(std::string trap_name) : ClapTrap(trap_name)
 {
-	std::cout << "[[ ScavTrap ]] " << this->name << " copy constructor called." << std::endl;
+	name = "ScavTrap(" + this->getName() + ")"; //for illustration purposes, that we have the derived class name
+	hit_points = 100;
+	energy_points = 50;
+	attack_damage = 20;
+	std::cout << "[[ ScavTrap ]] Constructor called" << std::endl;
 }
 
-/* Overloads */
-ScavTrap &ScavTrap::operator=(const ScavTrap& src)
+ScavTrap::ScavTrap(const ScavTrap &original) : ClapTrap(original)
+{
+	name = original.name + "(copy constructed)";
+	hit_points = original.hit_points;
+	energy_points = original.energy_points;	
+	attack_damage = original.attack_damage;
+	std::cout << "[[ ScavTrap ]] Copy Constructor called" << std::endl;
+}
+
+// Operators
+ScavTrap & ScavTrap::operator=(const ScavTrap &src)
 {
 	ClapTrap::operator=(src);
-	std::cout << "[[ ScavTrap ]] " << this->name << " assignation operator called." << std::endl;
-	return (*this);
+	name = src.name + "(copy assigned)";
+	hit_points = src.hit_points;
+	energy_points = src.energy_points;
+	attack_damage = src.attack_damage;
+	std::cout << "[[ ScavTrap ]] Assignement operator called" << std::endl;
+	return *this;
 }
 
-/* Destructor */
+// Destructor
 ScavTrap::~ScavTrap()
 {
-	std::cout << "[[ ScavTrap ]] " << this->name << " was destroyed." << std::endl;
+	std::cout << "[[ ScavTrap ]] Destructor called" << std::endl;
 }
 
 
+/* =================================================================================== */
 
-/* Other methods */
-void ScavTrap::guardGate()
+void	ScavTrap::guardGate()
 {
-	std::cout << "[[ ScavTrap ]] " << this->name << " is now in gate guarding mode!" << std::endl;
+	std::cout << "[[ ScavTrap ]] " << this->getName() << " have entered in Gate keeper mode" << std::endl;
 }
 
-void ScavTrap::attack(const str& target)
+/* my extra methods */
+void	ScavTrap::report() const
 {
-	if (energy_points <= 0)
-	{
-		std::cout << "[[ ScavTrap ]] " << name <<  " attempts to attack " << target << " but is out of energy points!" << std::endl;
-		return ;
-	}
-	std::cout << "[[ ScavTrap ]] " << name << " attacks " << target << " causing " << this->attack_damage << " points of damage!" << std::endl;
-	energy_points--;
-}
-
-/* My methods*/
-void ScavTrap::report()
-{
-	std::cout << "[[ ScavTrap ]] " << this->name << " : " << hit_points << " HP, " << energy_points << " EP." << std::endl;
+	std::cout << "[[ ScavTrap ]] " << this->getName() << " HP: " << this->getHP() << " Energy: " << this->getEnergy() << std::endl;
 }

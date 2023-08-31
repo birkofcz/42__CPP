@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:11:34 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 11:04:12 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 11:26:24 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class ClapTrap
 		void beRepaired(unsigned int amount);
 
 		/* constructors & destructors */
+		ClapTrap(); 						// default constructor
 		ClapTrap(std::string trap_name);
 		ClapTrap(const ClapTrap& original);
 		ClapTrap &operator=(const ClapTrap& src);
