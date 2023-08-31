@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/30 14:54:36 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 13:24:52 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,29 @@
 
 int main()
 {
+	std::cout << std::endl;
 	std::cout << GRE << "Creating ... " << RES << std::endl;
 	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
 	const WrongAnimal* k = new WrongCat();
 
+	std::cout << std::endl;
 	std::cout << GRE << "Types & sounds ... " << RES << std::endl;
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << "type: " << meta->getType() << " " << std::endl;
+	std::cout << "type: " << dog->getType() << " " << std::endl;
+
 	std::cout << k->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound(); 
+	dog->makeSound();
+	cat->makeSound(); 
 	meta->makeSound();
 	k->makeSound();
 	
-
-	/* destructing */
+	std::cout << std::endl;
 	std::cout << GRE << "Destructing ..." << RES << std::endl;
 	delete meta;
-	delete i;
-	delete j;
+	delete dog;
+	delete cat;
 	delete k;
 	return 0;
 }

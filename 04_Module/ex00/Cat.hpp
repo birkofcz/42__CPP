@@ -14,13 +14,13 @@
 # define CAT_H
 
 #include <iostream>
+#include <string>
 #include "Animal.hpp"
 
 #define RED "\033[31m"
 #define GRE "\033[32m"
 #define YEL "\033[33m"
 #define RES "\033[0m"
-/* ..so you dont have to write this all over again.. */
 
 class Cat : public Animal
 {
@@ -28,6 +28,7 @@ class Cat : public Animal
 		void	makeSound() const;
 
 		Cat();
+		Cat(std::string type);
 		Cat(const Cat& original);
 		Cat &operator=(const Cat& src);
 		~Cat();

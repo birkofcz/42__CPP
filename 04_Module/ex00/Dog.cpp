@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:49:15 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/29 14:39:54 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 13:15:17 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 /* Default constructor */
 Dog::Dog() : Animal()
 {
-	this->_type = "Dog";
+	_type = "Dog";
 	std::cout << "[[ Dog ]] default constructor called" << std::endl;
 }
 
-/* Parametric Constructor */
-/* Dog::Dog(std::string type) : _type(type)
+Dog::Dog(std::string type) : Animal(type)
 {
-	std::cout << "[[ Dog ]] parametric constructor called" << std::endl;
+	_type = type;
+	std::cout << "[[ Dog ]] constructor called" << std::endl;
 }
- */
+
 /* Copy constructor */
-Dog::Dog(const Dog& original)
+Dog::Dog(const Dog& original) : Animal(original)
 {
-	*this = original;
+	_type = original._type;
 	std::cout << "[[ Dog ]] copy constructor called" << std::endl;
 	return ;
 }
@@ -36,8 +36,9 @@ Dog::Dog(const Dog& original)
 /* Copy assignment operator overload */
 Dog& Dog::operator=(const Dog& src)
 {
+	Animal::operator=(src);
+	_type = src._type;
 	std::cout << "[[ Dog ]] copy assignment operator called" << std::endl;
-	this->_type = src._type;
 	return *this;
 }
 
