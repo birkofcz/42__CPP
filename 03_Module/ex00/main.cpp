@@ -6,21 +6,21 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/19 17:05:02 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 11:13:28 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include <unistd.h>
 
 int main()
 {
+	std::cout << std::endl;
+	std::cout << GRE << "Creation ..." << RES << std::endl;
 	ClapTrap x111("x111");
 	ClapTrap x214("x214");
 
 	std::cout << std::endl;
-	std::cout << GRE << "[[ ClapTrap test ]]" << RES << std::endl;
-	std::cout << std::endl;
+	std::cout << GRE << "Testing ..." << RES << std::endl;
 
 	std::cout << "[[ ClapTrap ]] " << x111.getName() << " has " << x111.getHP() << " hit points and " << x111.getEnergy() << " energy." << std::endl;
 	std::cout << "[[ ClapTrap ]] " << x214.getName() << " has " << x214.getHP() << " hit points and " << x214.getEnergy() << " energy." << std::endl;
@@ -55,6 +55,9 @@ int main()
 	std::cout << RED;
 	x111.takeDamage(10);
 	std::cout << RES;
+
+	std::cout << std::endl;
+	std::cout << GRE << "Destruction ..." << RES << std::endl;
 
 
 	return 0;

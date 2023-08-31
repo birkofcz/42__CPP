@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:11:34 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/19 14:56:40 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/08/31 11:04:12 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,37 @@
 # define CLAPTRAP_H
 
 #include <iostream>
+#include <string>
 
 #define RED "\033[31m"
 #define GRE "\033[32m"
 #define YEL "\033[33m"
 #define RES "\033[0m"
-/* ..so you dont have to write this all over again.. */
-typedef std::string str;
 
 class ClapTrap
 {
 	private:
-		str				name;
+		std::string		name;
 		unsigned int	hit_points;
 		unsigned int	energy_points;
 		unsigned int	attack_damage;
 
 	public:
-		void attack(const str& target);
+		/* methods */	
+		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		/* my additional functions for testing purposes */
-		str getName();
-		int getHP();
-		int getEnergy();
-
-		ClapTrap(str trap_name);
+		/* constructors & destructors */
+		ClapTrap(std::string trap_name);
 		ClapTrap(const ClapTrap& original);
 		ClapTrap &operator=(const ClapTrap& src);
 		~ClapTrap();
+
+		/* my additional methods for testing purposes */
+		std::string	getName() const;
+		int			getHP() const;
+		int			getEnergy() const;
 	
 };
 
