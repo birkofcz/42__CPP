@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:59:37 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/29 16:00:32 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 11:24:25 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ WrongAnimal::WrongAnimal()
 	std::cout << "[[ WrongAnimal ]] default constructor called" << std::endl;
 }
 
+WrongAnimal::WrongAnimal(std::string type)
+{
+	this->_type = type;
+	std::cout << "[[ WrongAnimal ]] constructor called" << std::endl;
+}
 /* Copy constructor */
 WrongAnimal::WrongAnimal(const WrongAnimal& original)
 {
-	*this = original;
+	_type = original._type;
 	std::cout << "[[ WrongAnimal ]] copy constructor called" << std::endl;
 	return ;
 }
@@ -30,8 +35,8 @@ WrongAnimal::WrongAnimal(const WrongAnimal& original)
 /* Copy assignment operator overload */
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& src)
 {
-	std::cout << "[[ WrongAnimal ]] copy assignment operator called" << std::endl;
 	this->_type = src._type;
+	std::cout << "[[ WrongAnimal ]] copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -44,6 +49,7 @@ WrongAnimal::~WrongAnimal()
 /* Member functions - methods */
 void	WrongAnimal::makeSound() const
 {
+	std::cout << "[[ WrongAnimal]] makesound() function was called" << std::endl;
 	return ;
 }
 

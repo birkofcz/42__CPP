@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/31 13:24:52 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 11:20:21 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,25 @@ int main()
 	const Animal* meta = new Animal();
 	const Animal* dog = new Dog();
 	const Animal* cat = new Cat();
-	const WrongAnimal* k = new WrongCat();
+	const WrongAnimal* wrongcat = new WrongCat();
 
 	std::cout << std::endl;
 	std::cout << GRE << "Types & sounds ... " << RES << std::endl;
 	std::cout << "type: " << meta->getType() << " " << std::endl;
 	std::cout << "type: " << dog->getType() << " " << std::endl;
+	std::cout << "type: " << cat->getType() << " " << std::endl;
+	std::cout << "type: " << wrongcat->getType() << " " << std::endl;
 
-	std::cout << k->getType() << " " << std::endl;
 	dog->makeSound();
 	cat->makeSound(); 
 	meta->makeSound();
-	k->makeSound();
+	wrongcat->makeSound();
 	
 	std::cout << std::endl;
 	std::cout << GRE << "Destructing ..." << RES << std::endl;
 	delete meta;
 	delete dog;
 	delete cat;
-	delete k;
+	delete wrongcat;
 	return 0;
 }

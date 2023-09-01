@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 15:57:27 by sbenes            #+#    #+#             */
-/*   Updated: 2023/08/29 15:59:06 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 11:18:09 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ class WrongAnimal
 		std::string	_type;
 		
 	public:
-		virtual void	makeSound() const;
+		void	makeSound() const;
 		virtual std::string	getType() const;
 		
 		WrongAnimal();
+		WrongAnimal(std::string type);
 		WrongAnimal(const WrongAnimal& original);
 		WrongAnimal &operator=(const WrongAnimal& src);
 		virtual ~WrongAnimal();

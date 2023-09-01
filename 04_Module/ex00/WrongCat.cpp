@@ -19,10 +19,15 @@ WrongCat::WrongCat() : WrongAnimal()
 	std::cout << "[[ WrongCat ]] default constructor called" << std::endl;
 }
 
+WrongCat::WrongCat(std::string type) : WrongAnimal(type)
+{
+	this->_type = type;
+	std::cout << "[[ WrongCat ]] constructor called" << std::endl;
+}
 /* Copy constructor */
 WrongCat::WrongCat(const WrongCat& original)
 {
-	*this = original;
+	_type = original._type;
 	std::cout << "[[ WrongCat ]] copy constructor called" << std::endl;
 	return ;
 }
@@ -30,8 +35,9 @@ WrongCat::WrongCat(const WrongCat& original)
 /* Copy assignment operator overload */
 WrongCat& WrongCat::operator=(const WrongCat& src)
 {
-	std::cout << "[[ WrongCat ]] copy assignment operator called" << std::endl;
+	WrongAnimal::operator=(src);
 	this->_type = src._type;
+	std::cout << "[[ WrongCat ]] copy assignment operator called" << std::endl;
 	return *this;
 }
 
