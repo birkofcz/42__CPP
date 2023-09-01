@@ -6,11 +6,11 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/01 14:29:26 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 14:41:25 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -20,14 +20,15 @@ int main()
 {
 	std::cout << std::endl;
 	std::cout << GRE << "Creating ... " << RES << std::endl;
-	const Animal* dog1 = new Dog();
-	const Animal* dog2 = new Dog();
+	const AAnimal* dog1 = new Dog();
+	const AAnimal* dog2 = new Dog();
+	//AAnimal test;
 	Dog	dog3;
 	Dog	dog4(dog3);
 	Dog	dog5;
 	dog5 = dog3;
-	const Animal* cat1 = new Cat();
-	const Animal* cat2 = new Cat();
+	const AAnimal* cat1 = new Cat();
+	const AAnimal* cat2 = new Cat();
 	Cat	cat3;
 	Cat	cat4(cat3);
 	Cat	cat5;		
@@ -49,7 +50,7 @@ int main()
 	cat5.readBrain();
 
 
-	std::cout << std::endl;
+/* 	std::cout << std::endl;
 	std::cout << GRE << "Creating array of animals ..." << RES << std::endl;
 	const Animal* animals[4];
 	for (int i = 0; i < 2; i++)
@@ -68,7 +69,8 @@ int main()
 	std::cout << GRE << "Destructing array of animals ..." << RES << std::endl;
 	for (int i = 0; i < 4; i++)
 		delete animals[i];
-		
+	*/
+
 	std::cout << std::endl;
 	std::cout << GRE << "Destructing ..." << RES << std::endl;
 	delete dog1;

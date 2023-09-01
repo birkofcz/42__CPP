@@ -6,21 +6,21 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 13:49:15 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/01 14:21:31 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 14:37:08 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
 /* Default constructor */
-Cat::Cat() : Animal()
+Cat::Cat() : AAnimal()
 {
 	_type = "Cat";
 	_brain = new Brain();
 	std::cout << "[[ Cat ]] default constructor called" << std::endl;
 }
 
-Cat::Cat(std::string type) : Animal(type)
+Cat::Cat(std::string type) : AAnimal(type)
 {
 	_type = type;
 	_brain = new Brain();
@@ -28,7 +28,7 @@ Cat::Cat(std::string type) : Animal(type)
 }
 
 /* Copy constructor */
-Cat::Cat(const Cat& original) : Animal(original)
+Cat::Cat(const Cat& original) : AAnimal(original)
 {
 	_type = original._type;
 	_brain = NULL;					// Initialize to a safe value	
@@ -41,7 +41,7 @@ Cat::Cat(const Cat& original) : Animal(original)
 /* Copy assignment operator overload */
 Cat& Cat::operator=(const Cat& src)
 {
-	Animal::operator=(src);
+	AAnimal::operator=(src);
 	this->_type = src._type;
 	*_brain = *src._brain;  // This should trigger the copy assignment operator for Brain - correctly adding (copyassigned) to the ideas array
 	std::cout << "[[ Cat ]] copy assignment operator called" << std::endl;

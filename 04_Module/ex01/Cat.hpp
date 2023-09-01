@@ -14,6 +14,7 @@
 # define CAT_H
 
 #include <iostream>
+#include <string>
 #include "Animal.hpp"
 #include "Brain.hpp"
 
@@ -21,18 +22,17 @@
 #define GRE "\033[32m"
 #define YEL "\033[33m"
 #define RES "\033[0m"
-/* ..so you dont have to write this all over again.. */
 
 class Cat : public Animal
 {
 	private:
-		Brain* brain;
-
+		Brain* _brain;
 	public:
 		void	makeSound() const;
-		void	readBrain(std::string name) const;
-
+		void	readBrain() const;
+		
 		Cat();
+		Cat(std::string type);
 		Cat(const Cat& original);
 		Cat &operator=(const Cat& src);
 		~Cat();

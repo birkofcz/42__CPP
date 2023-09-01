@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,54 +10,54 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 /* Default constructor */
-Animal::Animal()
+AAnimal::AAnimal()
 {
-	_type = "Animal meta type";
-	std::cout << "[[ Animal ]] default constructor called" << std::endl;
+	_type = "AAnimal meta type";
+	std::cout << "[[ AAnimal ]] default constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type)
+AAnimal::AAnimal(std::string type)
 {
 	_type = type;
-	std::cout << "[[ Animal ]] constructor called" << std::endl;
+	std::cout << "[[ AAnimal ]] constructor called" << std::endl;
 }
 
 /* Copy constructor */
-Animal::Animal(const Animal& original)
+AAnimal::AAnimal(const AAnimal& original)
 {
 	_type = original._type;
-	std::cout << "[[ Animal ]] copy constructor called" << std::endl;
+	std::cout << "[[ AAnimal ]] copy constructor called" << std::endl;
 	return ;
 }
 
 /* Copy assignment operator overload */
-Animal& Animal::operator=(const Animal& src)
+AAnimal& AAnimal::operator=(const AAnimal& src)
 {
 	_type = src._type;
-	std::cout << "[[ Animal ]] copy assignment operator called" << std::endl;
+	std::cout << "[[ AAnimal ]] copy assignment operator called" << std::endl;
 	return *this;
 }
 
 /* Destructor */
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
-	std::cout << "[[ Animal ]] destructor called" << std::endl;
+	std::cout << "[[ AAnimal ]] destructor called" << std::endl;
 }
 
 /* Member functions - methods */
-void	Animal::makeSound() const
+void	AAnimal::makeSound() const
 {
-	std::cout << "[[ Animal ]] makeSound() called" << std::endl;
+	std::cout << "[[ AAnimal ]] makeSound() called" << std::endl;
 	return ;
 }
 
-std::string	Animal::getType() const {return _type;}
+std::string	AAnimal::getType() const {return _type;}
 
-void	Animal::readBrain() const
+void	AAnimal::readBrain() const
 {
-	std::cout << "[[ Animal ]] readBrain() called" << std::endl;
+	std::cout << "[[ AAnimal ]] readBrain() called" << std::endl;
 	return ;
 }

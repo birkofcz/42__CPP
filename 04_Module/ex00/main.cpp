@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 17:10:56 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/01 11:20:21 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/01 14:49:23 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main()
 	cat->makeSound(); 
 	meta->makeSound();
 	wrongcat->makeSound();
-	
+
 	std::cout << std::endl;
 	std::cout << GRE << "Destructing ..." << RES << std::endl;
 	delete meta;

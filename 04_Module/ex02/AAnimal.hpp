@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 11:34:25 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/01 11:44:38 by sbenes           ###   ########.fr       */
+/*   Created: 2023/08/18 17:11:34 by sbenes            #+#    #+#             */
+/*   Updated: 2023/09/01 14:35:21 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_H
-# define BRAIN_H
+#ifndef AANIMAL_H
+# define AANIMAL_H
 
 #include <iostream>
 #include <string>
@@ -21,20 +21,21 @@
 #define YEL "\033[33m"
 #define RES "\033[0m"
 
-class Brain
+class AAnimal
 {
 	protected:
-		std::string	*_ideas;
+		std::string	_type;
 		
 	public:
-		std::string	*getIdeas() const;
-		std::string *setIdeas();
+		virtual void		makeSound() const = 0;	// pure virtual method makes this class abstract - cannot be instantiated
+		virtual std::string	getType() const;		// virtual makes it possible to override this method in derived classes
+		virtual void 		readBrain() const;
 		
-		Brain();
-		Brain(std::string type);
-		Brain(const Brain& original);
-		Brain &operator=(const Brain& src);
-		virtual ~Brain();							// virtual makes it possible to call derived class destructor when deleting base class pointer
+		AAnimal();
+		AAnimal(std::string type);
+		AAnimal(const AAnimal& original);
+		AAnimal &operator=(const AAnimal& src);
+		virtual ~AAnimal();							// virtual makes it possible to call derived class destructor when deleting base class pointer
 };
 
 #endif
