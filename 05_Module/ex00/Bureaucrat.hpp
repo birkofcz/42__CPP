@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 08:20:27 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/04 09:13:58 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:17:19 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat& original);
 		Bureaucrat &operator=(const Bureaucrat& src);
 		~Bureaucrat();
+
+		void	gradeUp(int howmuch);
+		void	gradeDown(int howmuch);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

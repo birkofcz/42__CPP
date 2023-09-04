@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/04 09:20:59 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/04 11:05:29 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		main.cpp Bureaucrat.cpp
+SRC = 		Bureaucrat.cpp main.cpp 
 all: $(NAME)
 
 $(NAME): 

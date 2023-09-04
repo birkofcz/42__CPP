@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 08:42:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/04 09:22:47 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/04 11:18:51 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,20 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
 {
 	os << obj.getName() << ", [[ Bureaucrat ]] grade " << obj.getGrade() << "." << std::endl;
 	return os;
+}
+
+/* Member functions */
+
+void	Bureaucrat::gradeUp(int howmuch)
+{
+	//if (_grade - howmuch < 1)
+	// exception here
+	_grade -= howmuch;
+}
+
+void	Bureaucrat::gradeDown(int howmuch)
+{
+	//if (_grade + howmuch > 150)
+	//exception here
+	_grade += howmuch;
 }
