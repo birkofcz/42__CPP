@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 08:20:27 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/04 11:17:19 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/05 13:10:52 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,25 @@ class Bureaucrat
 
 		void	gradeUp(int howmuch);
 		void	gradeDown(int howmuch);
+
+		/* Exception classes */
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return (RED "Grade is too high" RES);
+				}
+		};
+		
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return (RED "Grade is too low" RES);
+				}
+		};
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
