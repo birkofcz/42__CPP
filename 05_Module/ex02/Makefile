@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/07 11:50:12 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/07 14:56:02 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp main.cpp 
+SRC = 		Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp 
 all: $(NAME)
 
 $(NAME): 
