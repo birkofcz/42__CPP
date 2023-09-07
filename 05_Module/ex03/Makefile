@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/07 15:49:10 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/07 16:10:25 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ $(NAME):
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@echo "usage: ./Intern <form_name> <target>"
+	@echo "\nusage: ./Intern <form_name> <target>"
+	@echo "available forms: \"robotomy\", \"presidential\", \"shrubbery\"\n"
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"
