@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:00 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/07 15:10:56 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/07 16:03:27 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class AForm
 		AForm(std::string name, int signlimit, int executelimit);
 		AForm(const AForm& original);
 		AForm &operator=(const AForm& src);
-		~AForm();
+		virtual ~AForm();
 
 		/* Methods */
 		void			beSigned(const Bureaucrat& bureaucrat);
