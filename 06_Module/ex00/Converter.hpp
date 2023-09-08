@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:38:35 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/08 14:35:17 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/08 16:54:00 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 # include <iostream>
 # include <string>
-#include <sstream>
+# include <sstream>
+# include <stdexcept>
+# include <iomanip>
+# include <fstream>
 
 enum e_type
 {
@@ -28,7 +31,7 @@ enum e_type
 class ScalarConverter
 {
 	private:
-		static bool		_type;
+		static int		_type;
 
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const& original);
@@ -38,6 +41,8 @@ class ScalarConverter
 	public:
 		static void		convert(std::string str);
 		static void 	identify(std::string str);
+		static int 		getType();	
+		static void		setType(int type);
 };
 
 #endif

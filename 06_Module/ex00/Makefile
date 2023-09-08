@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/08 11:40:04 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/08 16:24:25 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,22 +17,22 @@ RED =	\033[31m
 NC =	\033[0m
 
 #name
-NAME =		Intern
+NAME =		converter
 
 #compilation
 CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp main.cpp 
+SRC = 		Converter.cpp main.cpp 
 all: $(NAME)
 
 $(NAME): 
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@echo "\nusage: ./Intern <form_name> <target>"
-	@echo "available forms: \"robotomy request\", \"presidential pardon\", \"shrubbery creation\"\n"
+	@echo "\nusage: ./converter <value>\n"
+
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"

@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:00:29 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/08 16:20:09 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/08 17:09:00 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ ScalarConverter::~ScalarConverter(){}
 //(index 0 = char, 1 = int, 2 = float, 3 = double) - connected to enum e_type
 /* bool	ScalarConverter::_flags[4] = {false, false, false, false}; */
 
+/* Data members */
+//setting the type of the parameter to default value, needs to be done because of static data member
+int	ScalarConverter::_type = -1;
 /* METHODS */
 
 void ScalarConverter::identify(std::string input)
@@ -43,7 +46,7 @@ void ScalarConverter::identify(std::string input)
 	int i = 0;
 
 	if (input.length() == 1 && std::isalpha(input[0]) && std::isprint(input[0]))
-		_type = CHAR;
+		setType(CHAR);
 	else
 	{
 		while (input[i])
@@ -57,13 +60,13 @@ void ScalarConverter::identify(std::string input)
 				{
 					i++;
 					if(input[i] == 'f' && !input[i + 1])
-						_type = FLOAT;
+						setType(FLOAT);
 				}
 				if (!input[i])
-					_type = DOUBLE;
+					setType(DOUBLE);
 			}
 			if (!input[i])
-				_type = INT;
+				setType(INT);
 		}
 	}
 }
@@ -83,7 +86,7 @@ void ScalarConverter::identify(std::string input)
 	else
 		_type = INT; */
 
-void ScalarConverter::convert(std::string input)
+/* void ScalarConverter::convert(std::string input)
 {
 	identify(input);
 	switch(_type)
@@ -115,4 +118,65 @@ void ScalarConverter::convert(std::string input)
 		default:
 			throw std::invalid_argument("Unrecognizable type");
 	}
+} */
+
+int	ScalarConverter::getType()
+{
+	return _type;
+}
+
+void	ScalarConverter::setType(int type)
+{
+	_type = type;
+}
+
+void ScalarConverter::convert(std::string input)
+{
+    identify(input);
+	int	type = getType();
+    std::istringstream ss(input);  // Create a stringstream with the input
+    switch(type)
+    {
+        case CHAR:
+            std::cout << "char: " << input[0] << std::endl;
+            std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+            std::cout << "float: " << static_cast<float>(input[0]) << std::endl;
+            std::cout << "double: " << static_cast<double>(input[0]) << std::endl;
+            break;
+        case INT:
+        {
+            int value;
+            ss >> value;
+			if (!std::isprint(value))
+				std::cout << "char: " << "imposible" << std::endl;
+			else
+	            std::cout << "char: " << static_cast<char>(value) << std::endl;
+            std::cout << "int: " << value << std::endl;
+            std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << std::endl;
+            std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value) << std::endl;
+            break;
+        }
+        case FLOAT:
+        {
+            float value;
+            ss >> value;
+            std::cout << "char: " << static_cast<char>(value) << std::endl;
+            std::cout << "int: " << static_cast<int>(value) << std::endl;
+            std::cout << "float: " << value << std::endl;
+            std::cout << "double: " << static_cast<double>(value) << std::endl;
+            break;
+        }
+        case DOUBLE:
+        {
+            double value;
+            ss >> value;
+            std::cout << "char: " << static_cast<char>(value) << std::endl;
+            std::cout << "int: " << static_cast<int>(value) << std::endl;
+            std::cout << "float: " << static_cast<float>(value) << std::endl;
+            std::cout << "double: " << value << std::endl;
+            break;
+        }
+        default:
+            throw std::invalid_argument("Unrecognizable type");
+    }
 }
