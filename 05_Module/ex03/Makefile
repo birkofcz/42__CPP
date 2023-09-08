@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/07 16:10:25 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/08 11:40:04 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME):
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
 	@echo "\nusage: ./Intern <form_name> <target>"
-	@echo "available forms: \"robotomy\", \"presidential\", \"shrubbery\"\n"
+	@echo "available forms: \"robotomy request\", \"presidential pardon\", \"shrubbery creation\"\n"
 
 clean:
 	@echo "$(BOLD)$(RED)[ 🔥 Removing program ]$(NC)"

@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:29:00 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/07 16:03:27 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/08 10:52:31 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Bureaucrat;
 
 class AForm
 {
-	private:
+	protected:
 		std::string const _name;
 		bool _signed;
 		int const _signlimit;

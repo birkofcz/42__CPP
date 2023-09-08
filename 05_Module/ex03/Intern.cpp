@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:24:19 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/07 16:01:34 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/08 11:36:12 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,23 @@ Intern::~Intern(){}
 
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	char identifier = std::tolower(name[0]);
-	std::string message = "Intern creates " + name + " form for " + target + "\n";
-	// using switch statement to create form. Using first letter of name to determine which form to create
-	//because switch statement does not work with strings, we are using first letter of name in its int representation
-	switch (identifier)
+	std::string forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	AForm* newforms[3] = {new ShrubberyCreationForm(target), new RobotomyRequestForm(target), new PresidentialPardonForm(target)};
+
+	for (int i = 0; i < 3; i++)
 	{
-		case 'r':
-			std::cout << message << std::endl;
-			return new RobotomyRequestForm(target);
-			break ;
-		case 'p':
-			std::cout << message << std::endl;
-			return new PresidentialPardonForm(target);
-			break ;
-		case 's':
-			std::cout << message << std::endl;
-			return new ShrubberyCreationForm(target);
-			break ;
-		default:
-			throw Intern::UnknownFormException();
+		if (name == forms[i])
+		{
+			std::cout << GRE << "Intern creates " << name << " form for " << target << RES << std::endl;
+			for (int j = 0; j < 3; j++)
+			{
+				if (j != i)
+					delete newforms[j];
+			}
+			return newforms[i];
+		}
 	}
+	for (int i = 0; i < 3; i++)
+		delete newforms[i];
+	throw Intern::UnknownFormException();
 }
-
-
