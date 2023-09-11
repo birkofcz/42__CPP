@@ -12,40 +12,6 @@
 
 #include "Converter.hpp"
 
-/* int main(int ac, char** av)
-{
-	if (std::string(av[2]).compare("-checker"))
-		return (std::cerr << RED << "Wrong optional argument" << RES << std::endl, 1);
-	else if (ac == 3 && !std::string(av[2]).compare("-checker"))
-	{
-		try
-		{
-			ScalarConverter::convert(av[1]);
-			std::cout << std::endl << YEL << "Datatype after casting check: " << RES << std::endl;
-			ScalarConverter::Checker(av[1]);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-			return 1;
-		}
-	}
-	else if (ac == 2)
-	{
-		try
-		{
-			ScalarConverter::identify(av[1]);
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << std::endl;
-			return 1;
-		}
-	}
-	else
-		return (std::cerr << RED << "Wrong number of arguments" << RES << std::endl, 1);
-	return 0;
-} */
 int main(int ac, char** av)
 {
 	if (ac == 2)

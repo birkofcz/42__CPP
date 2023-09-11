@@ -35,6 +35,14 @@ enum e_type
 	INVALID	= 4
 };
 
+/* 
+Static class in C++:
+There is no "static class" in C++, so we need to simulate it.
+A static class in C++ is a class that has only static methods and no public constructor. 
+It is intended to be used as a namespace. It is not possible to instantiate an object of that class.
+We can however call the static methods of the class without having to create an object of that class.
+ */
+
 class ScalarConverter
 {
 	private:
