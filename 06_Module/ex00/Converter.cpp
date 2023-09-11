@@ -53,6 +53,17 @@ void ScalarConverter::identify(std::string input)
 {
 	bool hasDecimal = false;
 	bool hasF = false;
+	// If the input is infinities or nan:
+	if (input == "nan" || input == "-inf" || input == "+inf")
+	{
+		setType(DOUBLE);
+		return;
+	}	
+	if (input == "-inff" || input == "+inff" || input == "nanf")
+	{
+		setType(FLOAT);
+		return;
+	}
 	// If the input is a single printable alphabet character
 	if (input.length() == 1 && std::isalpha(input[0]) && std::isprint(input[0]))
 	{
@@ -93,6 +104,8 @@ void ScalarConverter::convert(std::string input)
 {
 	identify(input);
 	int type = getType();
+	if (type == FLOAT) // If the type is float, remove the 'f' at the end, so we cabn take advantage of the stringstream (that can evaluate nan and inf)
+		input.erase(input.size() - 1);
 	std::istringstream ss(input); // Create a stringstream with the input - is used for conversion of the type itself.	std::cout << std::fixed << std::setprecision(1);
 	std::cout << std::fixed << std::setprecision(1);
 	switch (type)
@@ -109,11 +122,17 @@ void ScalarConverter::convert(std::string input)
 		{
 			int value;
 			ss >> value;
-			if (!std::isprint(value))
+
+			if (value >= 0 && value <= 31)
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
 				std::cout << "char: " << "imposible" << std::endl;
 			else
 				std::cout << "char: " << static_cast<char>(value) << std::endl;
-			std::cout << "int: " << value << std::endl;
+			if (value > 2147483647 || value < -2147483648)
+				std::cout << "int: " << "imposible" << std::endl;
+			else
+				std::cout << "int: " << value << std::endl;
 			std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
 			std::cout << "double: " << static_cast<double>(value) << std::endl;
 			break;
@@ -122,26 +141,41 @@ void ScalarConverter::convert(std::string input)
 		{
 			float value;
 			ss >> value;
-			if (!std::isprint(value))
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "char: " << "imposible" << std::endl;
+			else if (!std::isprint(value))
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
 				std::cout << "char: " << "imposible" << std::endl;
 			else
 				std::cout << "char: " << static_cast<char>(value) << std::endl;
-			std::cout << "int: " << static_cast<int>(value) << std::endl;
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "int: " << "imposible" << std::endl;
+			else
+				std::cout << "int: " << static_cast<int>(value) << std::endl;
 			std::cout << "float: " << value << "f" << std::endl;
 			std::cout << "double: " << static_cast<double>(value) << std::endl;
+
 			break;
 		}
 		case DOUBLE:
 		{
 			double value;
 			ss >> value;
-			if (!std::isprint(value))
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "char: " << "imposible" << std::endl;
+			else if (!std::isprint(value))
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
 				std::cout << "char: " << "imposible" << std::endl;
 			else
 				std::cout << "char: " << static_cast<char>(value) << std::endl;
-			std::cout << "int: " << static_cast<int>(value) << std::endl;
+			if (std::isnan(value) || std::isinf(value))	
+				std::cout << "int: " << "imposible" << std::endl;
+			else
+				std::cout << "int: " << static_cast<int>(value) << std::endl;
 			std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
-			std::cout << "double: " << value << std::endl;
+			std::cout << "double: " << value << std::endl;	
 			break;
 		}
 		default:
@@ -155,21 +189,26 @@ void ScalarConverter::convert(std::string input)
 void ScalarConverter::Checker(std::string input) {
     identify(input);
     int type = getType();
+
+    if (type == FLOAT) 
+        input.erase(input.size() - 1);
+
     std::istringstream ss(input); // Create a stringstream with the input
     std::cout << std::fixed << std::setprecision(1);
 
-	std::cout << std::endl <<YEL << "enum table: " << RES << std::endl;
-	std::cout << "CHAR: " << CHAR << std::endl;
-	std::cout << "INT: " << INT << std::endl;
-	std::cout << "FLOAT: " << FLOAT << std::endl;
-	std::cout << "DOUBLE: " << DOUBLE << std::endl;
-	std::cout << "INVALID: " << INVALID << std::endl << std::endl;
-	std::cout << YEL << "Datatype after casting check (using \"typeid().name()\" operator) :" << RES << std::endl;
+    std::cout << std::endl << YEL << "enum table: " << RES << std::endl;
+    std::cout << "CHAR: " << CHAR << std::endl;
+    std::cout << "INT: " << INT << std::endl;
+    std::cout << "FLOAT: " << FLOAT << std::endl;
+    std::cout << "DOUBLE: " << DOUBLE << std::endl;
+    std::cout << "INVALID: " << INVALID << std::endl << std::endl;
+    std::cout << YEL << "Datatype after casting check (using \"typeid().name()\" operator) :" << RES << std::endl;
+
     switch (type) {
         case CHAR:
         {
 			std::cout << "datatype identified: CHAR" << std::endl;
-			std::cout << "Datatype value in enum: " << type << std::endl;
+            std::cout << "Datatype value in enum: " << type << std::endl;
             char value = input[0];
             std::cout << "char: " << value << " [" << typeid(value).name() << "]" << std::endl;
             std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
@@ -182,12 +221,17 @@ void ScalarConverter::Checker(std::string input) {
             int value;
             ss >> value;
 			std::cout << "datatype identified: INT" << std::endl;
-			std::cout << "Datatype value in enum: " << type << std::endl;
-            if (!std::isprint(value))
-                std::cout << "char: impossible" << std::endl;
+            std::cout << "Datatype value in enum: " << type << std::endl;
+            if (value >= 0 && value <= 31)
+                std::cout << "char: " << "Non displayable" << std::endl;
+            else if (value < 0 || value > 127)
+                std::cout << "char: " << "impossible" << std::endl;
             else
                 std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            std::cout << "int: " << value << " [" << typeid(value).name() << "]" << std::endl;
+            if (value > 2147483647 || value < -2147483648)
+                std::cout << "int: " << "impossible" << std::endl;
+            else
+                std::cout << "int: " << value << " [" << typeid(value).name() << "]" << std::endl;
             std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
             std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
             break;
@@ -197,12 +241,19 @@ void ScalarConverter::Checker(std::string input) {
             float value;
             ss >> value;
 			std::cout << "datatype identified: FLOAT" << std::endl;
-			std::cout << "Datatype value in enum: " << type << std::endl;
-            if (!std::isprint(value))
-                std::cout << "char: impossible" << std::endl;
+            std::cout << "Datatype value in enum: " << type << std::endl;
+            if (std::isnan(value) || std::isinf(value))
+                std::cout << "char: " << "impossible" << std::endl;
+            else if (!std::isprint(value))
+                std::cout << "char: " << "Non displayable" << std::endl;
+            else if (value < 0 || value > 127)
+                std::cout << "char: " << "impossible" << std::endl;
             else
                 std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
+            if (std::isnan(value) || std::isinf(value))
+                std::cout << "int: " << "impossible" << std::endl;
+            else
+                std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
             std::cout << "float: " << value << "f" << " [" << typeid(value).name() << "]" << std::endl;
             std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
             break;
@@ -212,12 +263,19 @@ void ScalarConverter::Checker(std::string input) {
             double value;
             ss >> value;
 			std::cout << "datatype identified: DOUBLE" << std::endl;
-			std::cout << "Datatype value in enum: " << type << std::endl;
-            if (!std::isprint(value))
-                std::cout << "char: impossible" << std::endl;
+            std::cout << "Datatype value in enum: " << type << std::endl;
+            if (std::isnan(value) || std::isinf(value))
+                std::cout << "char: " << "impossible" << std::endl;
+            else if (!std::isprint(value))
+                std::cout << "char: " << "Non displayable" << std::endl;
+            else if (value < 0 || value > 127)
+                std::cout << "char: " << "impossible" << std::endl;
             else
                 std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
+            if (std::isnan(value) || std::isinf(value))
+                std::cout << "int: " << "impossible" << std::endl;
+            else
+                std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
             std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
             std::cout << "double: " << value << " [" << typeid(value).name() << "]" << std::endl;
             break;
