@@ -12,6 +12,8 @@
 
 #include "Converter.hpp"
 
+//Fot this exercise, we will use static_cast to convert the input to the other types. 
+
 /* OCC */
 ScalarConverter::ScalarConverter() {}
 
@@ -28,10 +30,6 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &src)
 
 ScalarConverter::~ScalarConverter() {}
 
-/* Data members*/
-// this holds flags for each type, to indicate what was  sent as parameter
-//(index 0 = char, 1 = int, 2 = float, 3 = double) - connected to enum e_type
-/* bool	ScalarConverter::_flags[4] = {false, false, false, false}; */
 
 /* Data members */
 // setting the type of the parameter to default value, needs to be done because of static data member
