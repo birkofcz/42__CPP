@@ -6,12 +6,13 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/11 17:14:35 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:37:52 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 #include <cstdlib>
+#include <bitset>
 
 void	printData(Data *data, std::string nameOfStructure)
 {

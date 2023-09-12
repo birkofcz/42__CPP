@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:11:51 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/11 17:13:52 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:44:16 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <stdint.h>
 
 # define RED "\033[31m"
 # define GRE "\033[32m"   
@@ -24,21 +25,21 @@
 
 struct Data
 {
-    std::string name;
-    int number;
+	std::string name;
+	int number;
 };
 
 class Serializer
 {
-    private:
-        Serializer();
-        Serializer(Serializer const & src);
-        Serializer & operator=(Serializer const & src);
-        ~Serializer();
+	private:
+		Serializer();
+		Serializer(Serializer const & src);
+		Serializer & operator=(Serializer const & src);
+		~Serializer();
 
-    public:
-        static uintptr_t* serialize(Data* data);
-        static Data* deserialize(uintptr_t* raw);
+	public:
+		static uintptr_t* serialize(Data* data);
+		static Data* deserialize(uintptr_t* raw);
 };
 
 #endif

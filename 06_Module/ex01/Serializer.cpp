@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:22:39 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/11 16:28:49 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/12 15:41:43 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Serializer::Serializer() {}
 
 Serializer::Serializer(Serializer const & src)
 {
-    *this = src;
+	*this = src;
 }
 
 Serializer & Serializer::operator=(Serializer const & src)
 {
-    (void)src;
-    return *this;
+	(void)src;
+	return *this;
 }
 
 Serializer::~Serializer() {}
