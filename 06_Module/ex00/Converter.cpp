@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:00:29 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/10 12:02:37 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/12 11:33:59 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void ScalarConverter::identify(std::string input)
 	bool hasDecimal = false;
 	bool hasF = false;
 	// If the input is infinities or nan:
-	if (input == "nan" || input == "-inf" || input == "+inf")
+	if (input == "nan" || input == "-inf" || input == "+inf" || input == "inf")
 	{
 		setType(DOUBLE);
 		return;
 	}	
-	if (input == "-inff" || input == "+inff" || input == "nanf")
+	if (input == "-inff" || input == "+inff" || input == "nanf" || input == "inff")
 	{
 		setType(FLOAT);
 		return;
@@ -138,7 +138,19 @@ void ScalarConverter::convert(std::string input)
 		case FLOAT:
 		{
 			float value;
-			ss >> value;
+			//This is needed because the stringstream can't evaluate nan and inf and I cannot use anything 
+			//more sophisticated because of exercise restrictions (std98)
+			//std::numeric_limits<float>::infinity() is used to get the infinity value of the float type
+			//so there is some automated work done afterwards with isinf and isnan.
+			if (input == "inff" || input == "+inff")
+				value = std::numeric_limits<float>::infinity();
+			else if (input == "-inff")
+				value = -std::numeric_limits<float>::infinity();
+			else if (input == "nanf")
+				value = std::numeric_limits<float>::quiet_NaN();
+			else
+				ss >> value;
+			//actual conversion
 			if (std::isnan(value) || std::isinf(value))
 				std::cout << "char: " << "imposible" << std::endl;
 			else if (!std::isprint(value))
@@ -159,7 +171,19 @@ void ScalarConverter::convert(std::string input)
 		case DOUBLE:
 		{
 			double value;
-			ss >> value;
+			//This is needed because the stringstream can't evaluate nan and inf and I cannot use anything 
+			//more sophisticated because of exercise restrictions (std98)
+			//std::numeric_limits<float>::infinity() is used to get the infinity value of the float type
+			//so there is some automated work done afterwards with isinf and isnan.
+			if (input == "inf" || input == "+inf")
+				value = std::numeric_limits<double>::infinity();
+			else if (input == "-inf")
+				value = -std::numeric_limits<double>::infinity();
+			else if (input == "nan")
+				value = std::numeric_limits<double>::quiet_NaN();
+			else
+				ss >> value;
+			//actual conversion
 			if (std::isnan(value) || std::isinf(value))
 				std::cout << "char: " << "imposible" << std::endl;
 			else if (!std::isprint(value))
@@ -184,105 +208,121 @@ void ScalarConverter::convert(std::string input)
 }
 
 //Checker function - does the same as convert, but adding the type of the variable to the output using typeid
-void ScalarConverter::Checker(std::string input) {
-    identify(input);
-    int type = getType();
+void ScalarConverter::Checker(std::string input) 
+{
+	identify(input);
+	int type = getType();
 
-    if (type == FLOAT) 
-        input.erase(input.size() - 1);
+	if (type == FLOAT) 
+		input.erase(input.size() - 1);
 
-    std::istringstream ss(input); // Create a stringstream with the input
-    std::cout << std::fixed << std::setprecision(1);
+	std::istringstream ss(input); // Create a stringstream with the input
+	std::cout << std::fixed << std::setprecision(1);
 
-    std::cout << std::endl << YEL << "enum table: " << RES << std::endl;
-    std::cout << "CHAR: " << CHAR << std::endl;
-    std::cout << "INT: " << INT << std::endl;
-    std::cout << "FLOAT: " << FLOAT << std::endl;
-    std::cout << "DOUBLE: " << DOUBLE << std::endl;
-    std::cout << "INVALID: " << INVALID << std::endl << std::endl;
-    std::cout << YEL << "Datatype after casting check (using \"typeid().name()\" operator) :" << RES << std::endl;
+	std::cout << std::endl << YEL << "enum table: " << RES << std::endl;
+	std::cout << "CHAR: " << CHAR << std::endl;
+	std::cout << "INT: " << INT << std::endl;
+	std::cout << "FLOAT: " << FLOAT << std::endl;
+	std::cout << "DOUBLE: " << DOUBLE << std::endl;
+	std::cout << "INVALID: " << INVALID << std::endl << std::endl;
+	std::cout << YEL << "Datatype after casting check (using \"typeid().name()\" operator) :" << RES << std::endl;
 
-    switch (type) {
-        case CHAR:
-        {
+	switch (type) {
+		case CHAR:
+		{
 			std::cout << "datatype identified: CHAR" << std::endl;
-            std::cout << "Datatype value in enum: " << type << std::endl;
-            char value = input[0];
-            std::cout << "char: " << value << " [" << typeid(value).name() << "]" << std::endl;
-            std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
-            std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
-            std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
-            break;
-        }
-        case INT:
-        {
-            int value;
-            ss >> value;
+			std::cout << "Datatype value in enum: " << type << std::endl;
+			char value = input[0];
+			std::cout << "char: " << value << " [" << typeid(value).name() << "]" << std::endl;
+			std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
+			std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
+			std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
+			break;
+		}
+		case INT:
+		{
+			int value;
+			ss >> value;
 			std::cout << "datatype identified: INT" << std::endl;
-            std::cout << "Datatype value in enum: " << type << std::endl;
-            if (value >= 0 && value <= 31)
-                std::cout << "char: " << "Non displayable" << std::endl;
-            else if (value < 0 || value > 127)
-                std::cout << "char: " << "impossible" << std::endl;
-            else
-                std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            if (value > 2147483647 || value < -2147483648)
-                std::cout << "int: " << "impossible" << std::endl;
-            else
-                std::cout << "int: " << value << " [" << typeid(value).name() << "]" << std::endl;
-            std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
-            std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
-            break;
-        }
-        case FLOAT:
-        {
-            float value;
-            ss >> value;
+			std::cout << "Datatype value in enum: " << type << std::endl;
+			if (value >= 0 && value <= 31)
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
+				std::cout << "char: " << "impossible" << std::endl;
+			else
+				std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
+			if (value > 2147483647 || value < -2147483648)
+				std::cout << "int: " << "impossible" << std::endl;
+			else
+				std::cout << "int: " << value << " [" << typeid(value).name() << "]" << std::endl;
+			std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
+			std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
+			break;
+		}
+		case FLOAT:
+		{
+			float value;
+			if (input == "inf" || input == "+inf")
+				value = std::numeric_limits<float>::infinity();
+			else if (input == "-inf")
+				value = -std::numeric_limits<float>::infinity();
+			else if (input == "nan")
+				value = std::numeric_limits<float>::quiet_NaN();
+			else
+				ss >> value;
 			std::cout << "datatype identified: FLOAT" << std::endl;
-            std::cout << "Datatype value in enum: " << type << std::endl;
-            if (std::isnan(value) || std::isinf(value))
-                std::cout << "char: " << "impossible" << std::endl;
-            else if (!std::isprint(value))
-                std::cout << "char: " << "Non displayable" << std::endl;
-            else if (value < 0 || value > 127)
-                std::cout << "char: " << "impossible" << std::endl;
-            else
-                std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            if (std::isnan(value) || std::isinf(value))
-                std::cout << "int: " << "impossible" << std::endl;
-            else
-                std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
-            std::cout << "float: " << value << "f" << " [" << typeid(value).name() << "]" << std::endl;
-            std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
-            break;
-        }
-        case DOUBLE:
-        {
-            double value;
-            ss >> value;
+			std::cout << "Datatype value in enum: " << type << std::endl;
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "char: " << "impossible" << std::endl;
+			else if (!std::isprint(value))
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
+				std::cout << "char: " << "impossible" << std::endl;
+			else
+				std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "int: " << "impossible" << std::endl;
+			else
+				std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
+			std::cout << "float: " << value << "f" << " [" << typeid(value).name() << "]" << std::endl;
+			std::cout << "double: " << static_cast<double>(value) << " [" << typeid(static_cast<double>(value)).name() << "]" << std::endl;
+			break;
+		}
+		case DOUBLE:
+		{
+			double value;
+			ss >> value;
+			if (input == "inf" || input == "+inf")
+				value = std::numeric_limits<double>::infinity();
+			else if (input == "-inf")
+				value = -std::numeric_limits<double>::infinity();
+			else if (input == "nan")
+				value = std::numeric_limits<double>::quiet_NaN();
+			else
+				ss >> value;
 			std::cout << "datatype identified: DOUBLE" << std::endl;
-            std::cout << "Datatype value in enum: " << type << std::endl;
-            if (std::isnan(value) || std::isinf(value))
-                std::cout << "char: " << "impossible" << std::endl;
-            else if (!std::isprint(value))
-                std::cout << "char: " << "Non displayable" << std::endl;
-            else if (value < 0 || value > 127)
-                std::cout << "char: " << "impossible" << std::endl;
-            else
-                std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
-            if (std::isnan(value) || std::isinf(value))
-                std::cout << "int: " << "impossible" << std::endl;
-            else
-                std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
-            std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
-            std::cout << "double: " << value << " [" << typeid(value).name() << "]" << std::endl;
-            break;
-        }
-        default:
-        {
+			std::cout << "Datatype value in enum: " << type << std::endl;
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "char: " << "impossible" << std::endl;
+			else if (!std::isprint(value))
+				std::cout << "char: " << "Non displayable" << std::endl;
+			else if (value < 0 || value > 127)
+				std::cout << "char: " << "impossible" << std::endl;
+			else
+				std::cout << "char: " << static_cast<char>(value) << " [" << typeid(static_cast<char>(value)).name() << "]" << std::endl;
+			if (std::isnan(value) || std::isinf(value))
+				std::cout << "int: " << "impossible" << std::endl;
+			else
+				std::cout << "int: " << static_cast<int>(value) << " [" << typeid(static_cast<int>(value)).name() << "]" << std::endl;
+			std::cout << "float: " << static_cast<float>(value) << "f" << " [" << typeid(static_cast<float>(value)).name() << "]" << std::endl;
+			std::cout << "double: " << value << " [" << typeid(value).name() << "]" << std::endl;
+			break;
+		}
+		default:
+		{
 			std::cout << "datatype identified: INVALID" << std::endl;
 			std::cout << "Datatype value in enum: " << type << std::endl;
-            throw std::invalid_argument(RED "Unrecognizable type" RES);
-        }
-    }
+			throw std::invalid_argument(RED "Unrecognizable type" RES);
+		}
+	}
 }

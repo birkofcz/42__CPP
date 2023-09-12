@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:38:35 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/10 11:18:28 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/12 11:28:41 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <iostream>
 # include <string>
 # include <sstream>
-# include <stdexcept>
 # include <iomanip>
-//# include <fstream> 
-#include <typeinfo>
+# include <typeinfo>
+# include <cmath>
+# include <limits>
 
 #define RED "\033[31m"
 #define GRE "\033[32m"
