@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/13 13:27:52 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/13 15:15:15 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,15 @@ CC =		c++
 CFLAGS = 	-Wall -Wextra -Werror -std=c++98
 
 #source files
-SRC = 		Converter.cpp main.cpp 
+SRC = 		main.cpp 
 all: $(NAME)
 
 $(NAME): 
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@echo "\nusage: ./converter <value>"
-	@echo "optional arguments: -checker (prints the debug part with datatype)\n"
+	@echo "\nusage: ./converter <value>" 
+	@
 
 
 clean:
