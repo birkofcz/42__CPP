@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/13 15:43:07 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/14 16:27:06 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	identify(char *str)
 		return DOUBLE;
 	else
 		return INVALID;
-
 }
 
 int main(int ac, char** av)
