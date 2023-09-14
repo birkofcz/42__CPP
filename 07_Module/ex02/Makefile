@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/14 14:12:18 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/14 16:23:11 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RED =	\033[31m
 NC =	\033[0m
 
 #name
-NAME =		whatever
+NAME =		array
 
 #compilation
 CC =		c++
@@ -31,8 +31,7 @@ $(NAME):
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@echo "\nusage: ./whatever <datatype> <value1> <value2>" 
-	@
+	@./$(NAME)
 
 
 clean:
