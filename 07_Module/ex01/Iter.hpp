@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 16:40:03 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/14 13:15:36 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/15 10:50:14 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@
 /* Templates */
 
 template <typename T>
-void	iter(T* array, int len, void (*func)(T&))
+void	iter(T* array, int len, void (*func)(T& array_element))
 {
 	for (int i = 0; i < len; i++)
 		func(array[i]);
 }
 
 template <typename T>
-void 	add_a(T& array_element)
+void 	printWithAppendedA(T& array_element)
 {
 	//std::cout << std::fixed << std::setprecision(1);
 	std::cout << array_element << "a" << std::endl;
