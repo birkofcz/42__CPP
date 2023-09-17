@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 16:47:06 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/17 14:59:06 by sbenes           ###   ########.fr       */
+/*   Created: 2023/09/17 15:07:24 by sbenes            #+#    #+#             */
+/*   Updated: 2023/09/17 17:08:20 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include <list>
-#include <deque>
+#include <set>
 #include <exception>
 
 #define GRE "\033[32m"
@@ -26,16 +25,28 @@
 #define BLU "\033[34m"
 #define RES "\033[0m"
 
-template <typename T>
-int easyfind(T& container, int value)
+class Span
 {
-	typename T::iterator i = std::find(container.begin(), container.end(), value);
-	if (i == container.end())
-		throw std::exception();
-	return (*i);
-}
+	private:
+		std::set<int> _set;
+		unsigned int _maxsize;
+
+	public:
+
+		void addNumber(int number);
+		void addNumbers(std::set<int>::iterator iBegin, std::set<int>::iterator iEnd);
+
+		int shortestSpan();
+		int longestSpan();
+
+		void printSet();
+		int getSize();
+
+		Span();
+		Span(unsigned int N);
+		Span(const Span& original);
+		Span& operator=(const Span& src);
+		~Span();
+};
 
 #endif
-
-//Containers
-//https://cplusplus.com/reference/stl/
