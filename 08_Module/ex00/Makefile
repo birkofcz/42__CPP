@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/14 16:23:11 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/17 14:50:24 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RED =	\033[31m
 NC =	\033[0m
 
 #name
-NAME =		array
+NAME =		easyfind
 
 #compilation
 CC =		c++
@@ -31,7 +31,9 @@ $(NAME):
 	@echo "$(BOLD)$(GREEN)[ Compiling ... ]$(NC)"
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
-	@./$(NAME)
+	@echo "\n$(BOLD)$(GREEN)[ 📖 Usage ]$(NC)"
+	@echo "3 containers will be created (vector, list, deque) and filled with 10 random numbers from 0 to 25"
+	@echo "To find number: ./easyfind <number>\n"
 
 
 clean:
