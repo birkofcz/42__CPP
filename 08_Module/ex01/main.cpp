@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/17 17:12:26 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/18 16:55:55 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 	{
 		Span sp = Span(5);
 
-		sp.addNumber(5);
+		sp.addNumber(6);
 		sp.addNumber(3);
 		sp.addNumber(17);
 		sp.addNumber(9);

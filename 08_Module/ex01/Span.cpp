@@ -6,11 +6,12 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:12:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/17 17:08:07 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/18 17:12:35 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <numeric>
 
 /* OCC */
 Span::Span(){}
@@ -67,7 +68,7 @@ int	Span::shortestSpan()
 	std::set<int>::iterator second_num = _set.begin();
 	std::advance(second_num, 1);
 	//_set.insert(smallest);
-	return (*second_num - *_set.begin());
+	return ((*second_num - *_set.begin()) - 1);
 }
 
 int Span::longestSpan()
@@ -76,7 +77,7 @@ int Span::longestSpan()
 		throw std::out_of_range("Error: there is not enough numbers");
 	//taking advantage of ordered set.....last one - first one....:)
 	return (*_set.rbegin() - *_set.begin());
-}
+} 
 
 void Span::printSet()
 {
