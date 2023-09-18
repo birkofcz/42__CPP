@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/18 15:30:04 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/18 16:49:35 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void printStack(std::stack<T> original)
 int main()
 {
 	std::cout << "\n------------------------------------------------------------" << std::endl;
-	std::cout << GRE "\n   [[[ MUTANTSTACK TEST]]]   " RES << std::endl;
+	std::cout << GRE "\n[[[ MutantStack TEST]]]   " RES << std::endl;
 	std::cout << YEL "\nCreating a MutantStack<int> mstack ..." RES << std::endl;
 	MutantStack<int> mstack;
 	
@@ -53,11 +53,33 @@ int main()
 	mstack.push(737);
 	mstack.push(0);
 
-	std::cout << YEL "\nMutantStack<int> iterator i ... iterating THE STACK!: " RES << std::endl;
+	std::cout << YEL "\nMutantStack<int>::iterator i ... iterating THE STACK!: " RES << std::endl;
 	MutantStack<int>::iterator i;
 	for (i = mstack.begin(); i != mstack.end(); i++)
 		std::cout << *i << " ";
 	std::cout << std::endl;
+
+	MutantStack<char> mstack2;
+	std::cout << YEL "\nCreating a MutantStack<char> mstack2 ..." RES << std::endl;
+	std::cout << YEL "mstack2.push('a')..mstack2.push('b')..mstack2.push('c')..mstack2.push('d') ..." RES << std::endl;
+	mstack2.push('a');
+	mstack2.push('b');
+	mstack2.push('c');
+	mstack2.push('d');
+	std::cout << "mstack2.top(): " << mstack2.top() << std::endl;
+	std::cout << "mstack2.size(): "<< mstack2.size() << std::endl;
+	std::cout << "mstack2.pop()" << std::endl;
+	mstack2.pop();
+	std::cout << "mstack2.size(): "<< mstack2.size() << std::endl;
+	std::cout << "mstack2.top(): " << mstack2.top() << std::endl;
+	mstack2.push('e');
+	std::cout << "mstack2.push('e')" << std::endl;
+	std::cout << YEL "\nMutantStack<char>::iterator it ... iterating THE STACK!: " RES << std::endl;
+	MutantStack<char>::iterator it;
+	for (it = mstack2.begin(); it != mstack2.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+
 /* 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
@@ -70,7 +92,25 @@ int main()
 	std::cout << YEL "\nstd::stack<int> s(mstack) created..." RES << std::endl;
 	std::stack<int> s(mstack);
 	std::cout << YEL "Printing the stack<int> s with helper test function: " RES;
-	printStack(s);	
+	printStack(s);
+	std::cout << std::endl;
+	s.pop();
+	std::cout << "\ns.pop()"<< std::endl;
+	printStack(s);
+	std::cout << "\ns.size(): "<< s.size() << std::endl;
+
+	std::cout << YEL "\nstd::stack<char> s2 = mstack2 created" RES << std::endl;
+	std::stack<char> s2;
+	s2 = mstack2;
+	std::cout << YEL "Printing the stack<char> s2 with helper test function: " RES;
+	printStack(s2);
+	std::cout << std::endl;
+	s2.push('f');
+	std::cout << "\ns2.push('f')"<< std::endl;
+	printStack(s2);
+	std::cout << "\ns2.size(): "<< s2.size() << std::endl;
+	std::cout << std::endl;
+
 	std::cout << "\n\n------------------------------------------------------------\n" << std::endl;
 
 	return 0;
