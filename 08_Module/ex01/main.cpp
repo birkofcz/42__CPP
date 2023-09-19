@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/18 16:55:55 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/19 11:50:01 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 		srand(time(NULL)); //seed for random nums
 		std::set<int> set_tmp;
 		while (set_tmp.size() < 1000)
-			set_tmp.insert(rand() % 2000);
+			set_tmp.insert((rand() % 4000) -2000);
 		
 		Span sp2 = Span(set_tmp.size());
 		sp2.addNumbers(set_tmp.begin(), set_tmp.end());

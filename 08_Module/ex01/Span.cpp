@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 15:12:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/18 17:12:35 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/19 11:44:03 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,30 @@ void Span::addNumbers(std::set<int>::iterator iBegin, std::set<int>::iterator iE
 	_set.insert(iBegin, iEnd);
 }
 
-int	Span::shortestSpan()
+/* 
+Shortest span si calculated by taking two adjacent numbers from the set and comparing them.
+Which ever difference is smaller, it is saved as the shortest span.
+ */
+int Span::shortestSpan()
 {
 	if (_set.size() < 2)
-		throw std::out_of_range("Error: there is not enough numbers");
-	//need a second number from an ordered set - to calculate shortest span
-	//fotn that, I set iterator and than advamce it by one, sending it to the second number...
-	std::set<int>::iterator second_num = _set.begin();
-	std::advance(second_num, 1);
-	//_set.insert(smallest);
-	return ((*second_num - *_set.begin()) - 1);
+		throw std::out_of_range("Error: there are not enough numbers");
+	//we need two iterators to go through the set
+	std::set<int>::iterator num = _set.begin();
+	std::set<int>::iterator next_num = _set.begin();
+	std::advance(next_num, 1); 				// next_num = num + 1 (first two numbers)
+
+	int shortest_span = *next_num - *num;  // Initial difference for first two numbers
+
+	/* this for loop is ommiting the first part of the syntax, 
+	because we already initialized the iterators (and using them before the for loop) */
+	for (; next_num != _set.end(); ++num, ++next_num)
+	{
+		int current_diff = *next_num - *num;
+		if (current_diff < shortest_span)
+			shortest_span = current_diff;
+	}
+	return shortest_span;
 }
 
 int Span::longestSpan()
