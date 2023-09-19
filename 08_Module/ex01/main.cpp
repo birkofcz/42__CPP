@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/19 11:50:01 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/19 12:28:49 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 int main()
 {
+	std::endl(std::cout);
 	try
 	{
 		Span sp = Span(5);
@@ -25,6 +26,7 @@ int main()
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
+		//sp.addNumber(147);  //uncomment to get error
 
 		std::cout << YEL "\nPrinting first set of size: " << sp.getSize() << std::endl;
 		sp.printSet();
@@ -36,7 +38,7 @@ int main()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED << e.what() << RES << std::endl;
 	}
 	///
 	try
@@ -59,7 +61,7 @@ int main()
 	}
 	catch(std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED << e.what() << RES << std::endl;
 	}
 	return 0;
 }

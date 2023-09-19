@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:20:24 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/18 16:49:35 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/19 12:35:29 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,15 @@ int main()
 		std::cout << *it << " ";
 	std::cout << std::endl;
 
-/* 	MutantStack<int>::iterator it = mstack.begin();
+/*  	MutantStack<int>::iterator its = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
+	++its;
+	--ite;
+	while (its != ite)
 	{
-		std::cout << *it << std::endl;
-		++it;
-	} */
+		std::cout << *its << std::endl;
+		++its;
+	}  */
 	std::cout << YEL "\nstd::stack<int> s(mstack) created..." RES << std::endl;
 	std::stack<int> s(mstack);
 	std::cout << YEL "Printing the stack<int> s with helper test function: " RES;
@@ -111,7 +111,7 @@ int main()
 	std::cout << "\ns2.size(): "<< s2.size() << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "\n\n------------------------------------------------------------\n" << std::endl;
+	std::cout << "\n------------------------------------------------------------\n" << std::endl;
 
 	return 0;
 }	
