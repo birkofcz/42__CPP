@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:11:01 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/21 14:20:00 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/22 14:21:30 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,26 @@
 class BTC
 {
 	private:
-		std::map<std::string, float> _data;
+		std::map<std::string, float>	_database;
+		int _Nrecords;
 
 	public:
 		BTC();
-		BTC(BTC const & src);
-		BTC & operator=(BTC const & src);
+		BTC(std::string records);
+		BTC(const BTC& original);
+		BTC & operator=(const BTC& src);
 		~BTC();
 
+		/* getters */
+		std::map<std::string, float>	getDatabase() const;
+		int								getNrecords() const;
 
-}
+		/* methods */
+		void							printDatabase(int lines = -1, const std::string& year = "") const;
 
+};
 
+std::vector<std::string>		CppSplit(std::string str, char delimiter);
+std::string						CppTrim(std::string str);
+float							CppStof(std::string str);
 #endif
