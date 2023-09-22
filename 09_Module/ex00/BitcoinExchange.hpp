@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:11:01 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/22 14:21:30 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/22 15:46:16 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class BTC
 		int								getNrecords() const;
 
 		/* methods */
-		void							printDatabase(int lines = -1, const std::string& year = "") const;
+		void	printDatabase(int lines = -1, const std::string& year = "") const;
 
 };
 

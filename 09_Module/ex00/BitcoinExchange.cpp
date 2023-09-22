@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:58 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/22 14:24:27 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/22 15:31:41 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,42 @@ BTC::~BTC(){}
 
 /* Methods */
 
-std::map<std::string, float>	BTC::getDatabase() const
-{
-	return (this->_database);
-}
+std::map<std::string, float>	BTC::getDatabase() const {return (this->_database);}
 
-int								BTC::getNrecords() const
-{
-	return (this->_Nrecords);
-}
+int	BTC::getNrecords() const {return (this->_Nrecords);}
+
 /* 
 Function to print the parsed database - you can specify the number of lines to print to be 
-able to print only the first few lines of the database as sample.
+able to print only the first few lines of the database as sample. You can also specify the year
+.
+
  */
-void							BTC::printDatabase(int lines, const std::string& year) const
+void	BTC::printDatabase(int lines, const std::string& year) const
 {
 	//function optionally takes number of lines to print and year to filter.
+	int		i = 0;
+	std::map<std::string, float>::const_iterator	it;
+
+	for (it = this->_database.begin(); it != this->_database.end(); ++it)
+	{
+		if (year != "" && it->first.substr(0, 4) != year)
+			continue;
+		std::cout << it->first << " | " << it->second << std::endl;
+		i++;
+		if (lines != -1 && i >= lines)
+			break;
+	}
+		std::cout << std::endl;
+		std::cout << "Lines printed: " << i << std::endl;
+		std::cout << "Records in database: " << this->_Nrecords << std::endl;
 }
 
 /* Functions */
-std::vector<std::string>		CppSplit(std::string str, char delimiter)
+
+/* 
+Good old split...
+ */
+std::vector<std::string>	CppSplit(std::string str, char delimiter)
 {
 	std::vector<std::string>	result;
 	std::stringstream			ss(str);
@@ -92,7 +108,12 @@ std::vector<std::string>		CppSplit(std::string str, char delimiter)
 	return (result);
 }
 
-float							CppStof(std::string str)
+/* 
+Converting function string->float using the sstream.
+The standard library function stof is not available in C++98
+
+ */
+float	CppStof(std::string str)
 {
 	std::stringstream	ss(str);
 	float				result;
