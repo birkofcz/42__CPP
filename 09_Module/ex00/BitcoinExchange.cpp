@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:58 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/22 15:31:41 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/23 16:06:47 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,23 @@ float	CppStof(std::string str)
 
 	ss >> result;
 	return (result);
+}
+
+std::string	ft_trimSpace(std::string& src)
+{
+	std::string::iterator front_it  = src.begin();
+	std::string::iterator back_it = src.end(); 
+	
+	
+	
+	while (front_it != src.end() && std::isspace(*front_it))
+		++front_it;
+
+	//*(back_it - 1) is the position of the last char, src.end() is poiting to
+	// the position right next to the last char.
+	while (back_it != front_it && std::isspace(*(back_it - 1)))
+		--back_it;
+
+	return std::string(front_it, back_it);
 }
 

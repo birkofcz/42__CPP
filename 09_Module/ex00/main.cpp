@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:52:53 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/22 16:25:02 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/23 16:07:32 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int ac, char **av)
 	while (std::getline(infile, line))
 	{
 		split = CppSplit(line, '|');
+		split[0] = ft_trimSpace(split[0]);
 		if (std::find(split[0].begin(), split[0].end(), '-') != split[0].end()) // to check if the date is in the right format
 		{
 			std::map<std::string, float> data = database.getDatabase();

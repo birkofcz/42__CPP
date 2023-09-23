@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:11:01 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/22 15:46:16 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/23 16:06:10 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ class BTC
 
 };
 
-std::vector<std::string>		CppSplit(std::string str, char delimiter);
-std::string						CppTrim(std::string str);
-float							CppStof(std::string str);
+std::vector<std::string>	CppSplit(std::string str, char delimiter);
+std::string					CppTrim(std::string str);
+float						CppStof(std::string str);
+std::string					ft_trimSpace(std::string& src);
 #endif
