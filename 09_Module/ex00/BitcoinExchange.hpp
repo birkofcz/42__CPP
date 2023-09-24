@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:11:01 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/23 16:06:10 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/24 15:55:01 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@
 # include <map>
 # include <algorithm>
 # include <fstream>
+# include <stdexcept>
 
 class BTC
 {
 	private:
 		std::map<std::string, float>	_database;
 		int _Nrecords;
+
+
 
 	public:
 		BTC();
