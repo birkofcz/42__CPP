@@ -6,14 +6,14 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:52:53 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/24 15:53:09 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/25 15:05:06 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-bool testDate(std::string date)
+static bool testDate(std::string date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
@@ -30,7 +30,7 @@ bool testDate(std::string date)
 	return true;
 }
 
-bool testNumber(std::string number)
+static bool testNumber(std::string number)
 {
 	std::stringstream ss(number);
 	float num;
@@ -46,13 +46,14 @@ int main(int ac, char **av)
 {
 	if (ac < 2)
 	{
-		std::cout << "Usage: ./ex00 [filepath]" << std::endl;
+		std::cout << "Usage: ./btc <filepath>" << std::endl;
 		return 1;
 	}
 	
 	BTC database("data.csv");
 
 	database.printDatabase(-1, "2011");
+	std::cout << std::endl;
 
 	/* Comparison part of the program */
 	std::string						filepath = av[1];
@@ -70,8 +71,8 @@ int main(int ac, char **av)
 		{
 			split = CppSplit(line, '|');
 			//test if date - split[0] - is in the right format
-			split[0] = ft_trimSpace(split[0]);
-			split[1] = ft_trimSpace(split[1]);
+			split[0] = trimSpace(split[0]);
+			split[1] = trimSpace(split[1]);
 			if (testDate(split[0]))
 			{
 				//test if the date is in the database
@@ -111,7 +112,7 @@ int main(int ac, char **av)
 					if (testNumber(split[1]))
 					{
 						float value1 = CppStof(split[1]);
-						std::cout << split[0] << " not in database, using value from: " << lastDate << " | " << value1 << " => " << value1 * lastValue << std::endl;
+						std::cout << split[0] << " not in database, using: " << lastDate << " | " << value1 << " => " << value1 * lastValue << std::endl;
 					}
 					else
 						std::cout << "Error: bad input format => " << line << std::endl;

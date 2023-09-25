@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 13:18:58 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/23 16:06:47 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/25 14:58:49 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ float	CppStof(std::string str)
 	return (result);
 }
 
-std::string	ft_trimSpace(std::string& src)
+std::string	trimSpace(std::string& src)
 {
 	std::string::iterator front_it  = src.begin();
 	std::string::iterator back_it = src.end(); 
