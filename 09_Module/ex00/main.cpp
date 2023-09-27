@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:52:53 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/25 15:05:06 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/27 14:47:11 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 	
 	BTC database("data.csv");
 
-	database.printDatabase(-1, "2011");
+	//database.printDatabase(-1, "2011");
 	std::cout << std::endl;
 
 	/* Comparison part of the program */
@@ -61,6 +61,16 @@ int main(int ac, char **av)
 	std::ifstream					infile(filepath.c_str()); //.c_str() is needed to be std98 compliant
 	std::string						line;
 
+	if (!infile)
+	{
+		std::cout << "Error: cannot open file" << std::endl;
+		return 1;
+	}
+	if (infile.peek() == std::ifstream::traits_type::eof())
+	{
+		std::cout << "Error: empty file" << std::endl;
+		return 1;
+	}
 	while (std::getline(infile, line))
 	{
 		//test if the line has | in it
