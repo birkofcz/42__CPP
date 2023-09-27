@@ -6,7 +6,7 @@
 /*   By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 12:52:53 by sbenes            #+#    #+#             */
-/*   Updated: 2023/09/27 14:47:11 by sbenes           ###   ########.fr       */
+/*   Updated: 2023/09/27 14:50:31 by sbenes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,6 @@ int main(int ac, char **av)
 	if (!infile)
 	{
 		std::cout << "Error: cannot open file" << std::endl;
-		return 1;
-	}
-	if (infile.peek() == std::ifstream::traits_type::eof())
-	{
-		std::cout << "Error: empty file" << std::endl;
 		return 1;
 	}
 	while (std::getline(infile, line))
