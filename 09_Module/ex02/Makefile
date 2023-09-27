@@ -6,7 +6,7 @@
 #    By: sbenes <sbenes@student.42prague.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 09:20:07 by sbenes            #+#    #+#              #
-#    Updated: 2023/09/25 16:35:11 by sbenes           ###   ########.fr        #
+#    Updated: 2023/09/27 14:38:03 by sbenes           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ $(NAME):
 	@$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 	@echo "$(BOLD)$(GREEN)[ 🪄 Program ready! ]$(NC)"
 	@echo "\n$(BOLD)$(GREEN)[ 📖 Usage ]$(NC)"
-	@echo "./RPN <reverse polish notation expression>"
-	@echo "./RPN eval - subject & evalsheet tests mode\n"
+	@echo "./PmergeMe <sequence of numbers>"
+	@echo "./PmergeMe -test for test mode with 1k, 10k and 100k random numbers\n"
 
 
 clean:
