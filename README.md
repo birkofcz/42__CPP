@@ -7,4 +7,4 @@ Introduction to C++ and four basic pillars of object-oriented programming: Encap
 
 [Good introduction video to those pillars (freeCodeCamp.org)](https://www.youtube.com/watch?v=SiBw7os-_zI)
 
-[Longer course introducing the conceps in C++ (freeCodeCamp.org](https://www.youtube.com/watch?v=wN0x9eZLix4)
+[Longer course introducing the conceps in C++ (freeCodeCamp.org)](https://www.youtube.com/watch?v=wN0x9eZLix4)
